@@ -8,6 +8,126 @@
             name="description"
             content="O SGH conecta tecnologia, monitoramento e inteligência para transformar a gestão hídrica do seu evento em uma operação orientada por dados."
         />
+        <link rel="canonical" href="https://sghdispenser.com/" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="theme-color" content="#020617" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:site_name" content="SGH PRO" />
+        <meta property="og:title" content="SGH PRO | Gestão hídrica inteligente para eventos" />
+        <meta
+            property="og:description"
+            content="Monitore pontos de hidratação, centralize dados e tome decisões melhores durante grandes eventos."
+        />
+        <meta property="og:url" content="https://sghdispenser.com/" />
+        <meta property="og:image" content="https://sghdispenser.com/dashboard.png" />
+        <meta property="og:image:alt" content="Dashboard do SGH para monitoramento da operação hídrica" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="SGH PRO | Gestão hídrica inteligente para eventos" />
+        <meta
+            name="twitter:description"
+            content="Tecnologia e dados para monitorar a hidratação de festivais, shows, arenas e grandes eventos."
+        />
+        <meta name="twitter:image" content="https://sghdispenser.com/dashboard.png" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "@id": "https://sghdispenser.com/#organization",
+                        "name": "SGH PRO",
+                        "url": "https://sghdispenser.com/",
+                        "logo": "https://sghdispenser.com/logo-square.png",
+                        "email": "contato@sghdispenser.com",
+                        "sameAs": ["https://instagram.com/sghdispenser"]
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "@id": "https://sghdispenser.com/#software",
+                        "name": "SGH PRO",
+                        "applicationCategory": "BusinessApplication",
+                        "applicationSubCategory": "Gestão hídrica para eventos",
+                        "operatingSystem": "Web",
+                        "description": "Plataforma para monitoramento, análise e gestão da operação hídrica em eventos.",
+                        "url": "https://sghdispenser.com/",
+                        "publisher": { "@id": "https://sghdispenser.com/#organization" }
+                    },
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://sghdispenser.com/#website",
+                        "url": "https://sghdispenser.com/",
+                        "name": "SGH PRO",
+                        "inLanguage": "pt-BR",
+                        "publisher": { "@id": "https://sghdispenser.com/#organization" }
+                    }
+                ]
+            }
+        </script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "O SGH é um software ou um equipamento?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "O SGH é uma solução de gestão completa que combina plataforma digital, dashboard, inteligência e infraestrutura tecnológica integrada para monitoramento da operação hídrica."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "O SGH funciona em eventos de diferentes tamanhos?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A solução foi concebida com arquitetura modular e escalabilidade para diferentes modelos de operação."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Preciso instalar o SGH permanentemente?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Não necessariamente. A configuração pode ser temporária para festivais e shows ou permanente para venues, estádios e arenas fixas."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "O SGH monitora o consumo?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sim. A plataforma trabalha com dados em tempo real relacionados à operação hídrica e ao consumo pontual, permitindo acompanhar picos de demanda e fluxo por setor."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Posso utilizar o SGH em mais de um evento?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sim. Os dados de diferentes operações podem ser acompanhados e utilizados para gerar histórico comparativo e aprendizado operacional contínuo."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "O SGH substitui minha equipe?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Não. O SGH é uma ferramenta de apoio à gestão e fornece visibilidade e inteligência para que sua equipe tome decisões com mais velocidade e precisão."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "O SGH garante conformidade com a legislação?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "O SGH apoia a organização, rastreabilidade e monitoramento dos pontos de água, fornecendo dados comprobatórios para atender às exigências legais e normas técnicas aplicáveis."
+                        }
+                    }
+                ]
+            }
+        </script>
         <!-- Favicon / Tab Icons -->
         <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
         <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png" />
@@ -20,6 +140,10 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
         />
         <!-- Lucide Icons (Minimalist Icon System) -->
         <script src="https://unpkg.com/lucide@latest"></script>
@@ -66,6 +190,7 @@
         <nav
             class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300"
             id="navbar"
+            aria-label="Navegação principal"
         >
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-20">
@@ -170,6 +295,7 @@
             </div>
         </nav>
 
+        <main>
         <!-- Hero Section -->
         <header
             id="inicio"
@@ -1246,14 +1372,14 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <a
-                                href="https://instagram.com"
+                                href="https://instagram.com/sghdispenser"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 hover:bg-pink-500/10 text-slate-400 hover:text-pink-400 flex items-center justify-center transition-all shadow-sm group"
                                 aria-label="Instagram SGH"
                                 title="Instagram"
                             >
-                                <i data-lucide="instagram" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                                <i class="bi bi-instagram w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
                             </a>
                             <a
                                 href="https://linkedin.com"
@@ -1263,7 +1389,7 @@
                                 aria-label="LinkedIn SGH"
                                 title="LinkedIn"
                             >
-                                <i data-lucide="linkedin" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                                <i class="bi bi-linkedin w-5 h-5 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -1391,6 +1517,7 @@
                 </form>
             </div>
         </section>
+        </main>
 
         <!-- Footer -->
         <footer class="bg-slate-950 border-t border-slate-800 pt-16 pb-12">
@@ -1418,14 +1545,14 @@
                         </a>
                         <div class="flex items-center gap-2.5 mt-5">
                             <a
-                                href="https://instagram.com"
+                                href="https://instagram.com/sghdispenser"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 hover:border-pink-500/50 hover:bg-pink-500/10 text-slate-400 hover:text-pink-400 flex items-center justify-center transition-all shadow-sm group"
                                 aria-label="SGH no Instagram"
                                 title="Instagram"
                             >
-                                <i data-lucide="instagram" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                                <i class="bi bi-instagram w-4 h-4 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
                             </a>
                             <a
                                 href="https://linkedin.com"
@@ -1435,7 +1562,7 @@
                                 aria-label="SGH no LinkedIn"
                                 title="LinkedIn"
                             >
-                                <i data-lucide="linkedin" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                                <i class="bi bi-linkedin w-4 h-4 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
                             </a>
                             <a
                                 href="mailto:contato@sghdispenser.com"
