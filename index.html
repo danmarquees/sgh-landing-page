@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SGH | Sistema de Gestão Hídrica</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: { sans: ["Inter", "sans-serif"] },
+                        colors: {
+                            brand: {
+                                50: "#f0f9ff",
+                                100: "#e0f2fe",
+                                400: "#38bdf8",
+                                500: "#0ea5e9",
+                                600: "#0284c7",
+                                700: "#0369a1",
+                                800: "#075985",
+                                900: "#0c4a6e",
+                                950: "#082f49",
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .bg-grid-pattern {
+                background-image:
+                    linear-gradient(
+                        to right,
+                        rgba(255, 255, 255, 0.05) 1px,
+                        transparent 1px
+                    ),
+                    linear-gradient(
+                        to bottom,
+                        rgba(255, 255, 255, 0.05) 1px,
+                        transparent 1px
+                    );
+                background-size: 40px 40px;
+            }
+            @keyframes subtle-glow {
+                0%,
+                100% {
+                    opacity: 0.5;
+                }
+                50% {
+                    opacity: 0.8;
+                }
+            }
+            .animate-glow {
+                animation: subtle-glow 4s ease-in-out infinite;
+            }
+            @keyframes liquid-morph {
+                0%,
+                100% {
+                    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+                }
+                50% {
+                    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+                }
+            }
+            .animate-liquid {
+                animation: liquid-morph 8s ease-in-out infinite;
+            }
+            .waves > use {
+                animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5)
+                    infinite;
+            }
+            @keyframes move-forever {
+                0% {
+                    transform: translate3d(-90px, 0, 0);
+                }
+                100% {
+                    transform: translate3d(85px, 0, 0);
+                }
+            }
+            details summary {
+                list-style: none;
+            }
+            details summary::-webkit-details-marker {
+                display: none;
+            }
+            .eyebrow,
+            .eyebrow-dark {
+                display: none;
+            }
+            .section-title {
+                font-size: clamp(2rem, 4vw, 3rem);
+                font-weight: 700;
+                line-height: 1.15;
+                margin-bottom: 1.5rem;
+            }
+            .body-copy {
+                font-size: 1.125rem;
+                color: #475569;
+                line-height: 1.75;
+            }
+        </style>
+    </head>
+    <body
+        class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-brand-500 selection:text-white"
+    >
+        <nav
+            class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <a href="#inicio" class="flex items-center gap-2"
+                        ><div
+                            class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/30"
+                        >
+                            <i
+                                data-lucide="layers"
+                                class="text-white w-6 h-6"
+                            ></i>
+                        </div>
+                        <span class="text-white font-bold text-xl"
+                            >SGH
+                            <span class="text-brand-500 font-black"
+                                >PRO</span
+                            ></span
+                        ></a
+                    >
+                    <div class="hidden md:flex items-center space-x-7">
+                        <a
+                            href="#dor"
+                            class="text-slate-300 hover:text-white text-sm"
+                            >A operação</a
+                        ><a
+                            href="#solucao"
+                            class="text-slate-300 hover:text-white text-sm"
+                            >O SGH</a
+                        ><a
+                            href="#beneficios"
+                            class="text-slate-300 hover:text-white text-sm"
+                            >Benefícios</a
+                        ><a
+                            href="#tecnologia"
+                            class="text-slate-300 hover:text-white text-sm"
+                            >Tecnologia</a
+                        ><a
+                            href="#contato"
+                            class="bg-brand-600 hover:bg-brand-500 text-white px-5 py-2.5 rounded-md font-medium text-sm"
+                            >Solicitar demonstração</a
+                        >
+                    </div>
+                    <button
+                        id="mobile-menu-btn"
+                        class="md:hidden text-slate-300"
+                        aria-label="Abrir menu"
+                    >
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+            <div
+                id="mobile-menu"
+                class="hidden md:hidden bg-slate-900 border-b border-slate-800"
+            >
+                <div class="px-4 py-3 space-y-1">
+                    <a href="#dor" class="block py-2 text-slate-300"
+                        >A operação</a
+                    ><a href="#solucao" class="block py-2 text-slate-300"
+                        >O SGH</a
+                    ><a href="#beneficios" class="block py-2 text-slate-300"
+                        >Benefícios</a
+                    ><a
+                        href="#contato"
+                        class="block py-2 text-brand-400 font-bold"
+                        >Solicitar demonstração</a
+                    >
+                </div>
+            </div>
+        </nav>
+        <header
+            id="inicio"
+            class="relative pt-32 pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-slate-950 text-white"
+        >
+            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+            <div
+                class="absolute top-1/4 left-1/4 w-[25rem] h-[25rem] bg-brand-500/20 blur-2xl animate-liquid"
+            ></div>
+            <div
+                class="absolute top-1/3 right-1/4 w-[30rem] h-[30rem] bg-cyan-500/20 blur-2xl animate-liquid"
+            ></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-14 items-center">
+                    <div>
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-brand-400 text-sm font-medium mb-7"
+                        >
+                            <span
+                                class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"
+                            ></span
+                            >SGH | Sistema de Gestão Hídrica
+                        </div>
+                        <h1
+                            class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight"
+                        >
+                            Transforme a hidratação do seu evento em
+                            <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-400"
+                                >dados.</span
+                            >
+                        </h1>
+                        <p class="text-lg text-slate-300 mb-9 leading-relaxed">
+                            O SGH conecta tecnologia, monitoramento e gestão
+                            para dar mais visibilidade à operação hídrica do seu
+                            evento, ajudando sua equipe a acompanhar o consumo e
+                            tomar decisões com mais informação.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a
+                                href="#contato"
+                                class="px-7 py-4 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-semibold text-lg text-center shadow-[0_0_20px_rgba(2,132,199,.4)]"
+                                >Solicitar demonstração</a
+                            ><a
+                                href="#solucao"
+                                class="px-7 py-4 rounded-lg bg-slate-800/80 border border-slate-700 text-white font-semibold text-lg text-center"
+                                >Conhecer o SGH</a
+                            >
+                        </div>
+                        <p class="mt-5 text-sm text-slate-500">
+                            Tecnologia desenvolvida para operações de eventos.
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-2xl bg-slate-900 border border-slate-700 p-5 shadow-2xl animate-glow"
+                    >
+                        <div
+                            class="flex items-center justify-between border-b border-slate-800 pb-4 mb-5"
+                        >
+                            <span class="font-mono text-xs text-slate-500"
+                                >SGH / OPERAÇÃO AO VIVO</span
+                            ><span class="text-xs text-emerald-400"
+                                >● Online</span
+                            >
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <div class="bg-slate-800 p-4 rounded-lg">
+                                <p class="text-xs text-slate-500">
+                                    Consumo total
+                                </p>
+                                <p class="text-2xl font-bold text-white mt-1">
+                                    18.420
+                                    <span class="text-sm text-brand-400"
+                                        >L</span
+                                    >
+                                </p>
+                            </div>
+                            <div class="bg-slate-800 p-4 rounded-lg">
+                                <p class="text-xs text-slate-500">
+                                    Pontos ativos
+                                </p>
+                                <p class="text-2xl font-bold text-white mt-1">
+                                    24
+                                    <span class="text-sm text-emerald-400"
+                                        >/ 24</span
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800 rounded-lg p-4">
+                            <div
+                                class="flex justify-between text-xs text-slate-400 mb-4"
+                            >
+                                <span>Mapa de hidratação</span
+                                ><span class="text-brand-400"
+                                    >Atualizado agora</span
+                                >
+                            </div>
+                            <div
+                                class="h-32 rounded bg-slate-950 relative overflow-hidden bg-grid-pattern"
+                            >
+                                <span
+                                    class="absolute top-7 left-1/4 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_14px_#34d399]"
+                                ></span
+                                ><span
+                                    class="absolute top-16 left-1/2 w-3 h-3 rounded-full bg-brand-400 shadow-[0_0_14px_#38bdf8]"
+                                ></span
+                                ><span
+                                    class="absolute top-10 right-1/4 w-3 h-3 rounded-full bg-amber-400 shadow-[0_0_14px_#fbbf24]"
+                                ></span
+                                ><span
+                                    class="absolute bottom-6 left-1/3 w-3 h-3 rounded-full bg-brand-400 shadow-[0_0_14px_#38bdf8]"
+                                ></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-full overflow-hidden leading-none"
+            >
+                <svg
+                    class="block w-full h-16"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 24 150 28"
+                    preserveAspectRatio="none"
+                >
+                    <defs>
+                        <path
+                            id="gentle-wave"
+                            d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"
+                        />
+                    </defs>
+                    <g class="waves">
+                        <use
+                            href="#gentle-wave"
+                            x="48"
+                            fill="rgba(14,165,233,.3)"
+                        />
+                        <use href="#gentle-wave" x="48" y="4" fill="#f8fafc" />
+                    </g>
+                </svg>
+            </div>
+        </header>
+        <section id="dor" class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mb-12">
+                    <p class="eyebrow">01 / A dor</p>
+                    <h2 class="section-title">
+                        A hidratação também é uma operação.
+                    </h2>
+                    <p class="body-copy">
+                        Em eventos de grande porte, disponibilizar água é apenas
+                        uma parte do desafio. É preciso planejar pontos,
+                        acompanhar a demanda, organizar abastecimento, mobilizar
+                        equipes e responder rapidamente às mudanças durante a
+                        operação.
+                    </p>
+                    <p class="mt-5 text-xl font-semibold">
+                        E quando você não consegue enxergar a operação, fica
+                        muito mais difícil gerenciá-la.
+                    </p>
+                </div>
+                <p class="text-slate-500 mb-5">
+                    Você sabe o que está acontecendo com a hidratação do seu
+                    evento enquanto ele acontece?
+                </p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    ${card('droplets','CONSUMO','Quanto está sendo
+                    consumido?')}${card('map-pin','LOCALIZAÇÃO','Quais pontos
+                    apresentam maior demanda?')}${card('timer','DEMANDA','Em
+                    quais momentos o consumo
+                    aumenta?')}${card('truck','OPERAÇÃO','Onde sua equipe
+                    precisa atuar?')}${card('bar-chart-3','HISTÓRICO','O que os
+                    dados podem ensinar para o próximo?')}
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-14 items-start">
+                    <div>
+                        <p class="eyebrow">02 / O problema</p>
+                        <h2 class="section-title">
+                            Sem dados, a gestão vira percepção.
+                        </h2>
+                        <p class="body-copy">
+                            Uma operação pode estar funcionando, mas isso não
+                            significa que esteja sendo otimizada. Sem
+                            informações consolidadas, decisões acabam sendo
+                            tomadas apenas depois que o problema aparece.
+                        </p>
+                    </div>
+                    <div class="border-l-4 border-brand-500 pl-6">
+                        <p class="text-slate-500 mb-4">Situações comuns</p>
+                        <div class="space-y-3 text-slate-700">
+                            ${listItem('Reposição baseada em
+                            estimativas')}${listItem('Dificuldade para
+                            identificar pontos de maior
+                            demanda')}${listItem('Informações espalhadas entre
+                            diferentes equipes')}${listItem('Falta de histórico
+                            operacional')}${listItem('Desperdícios difíceis de
+                            identificar')}${listItem('Tempo de resposta maior
+                            diante de uma mudança')}
+                        </div>
+                        <p class="mt-8 text-xl font-semibold text-brand-700">
+                            O que você não consegue medir, dificilmente consegue
+                            otimizar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section
+            id="solucao"
+            class="py-24 bg-brand-600 text-white relative overflow-hidden"
+        >
+            <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mb-14">
+                    <p
+                        class="text-brand-100 font-mono text-sm uppercase tracking-widest mb-3"
+                    >
+                        03 / Apresentação
+                    </p>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                        Conheça o SGH.
+                    </h2>
+                    <p class="text-xl text-brand-100">
+                        Uma plataforma criada para transformar a gestão hídrica
+                        do evento em uma operação orientada por dados.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-5">
+                    ${darkCard('monitor','MONITORAR','Tenha visibilidade sobre
+                    os pontos e informações da
+                    operação.')}${darkCard('scan-line','ANALISAR','Transforme
+                    dados em indicadores e padrões de
+                    consumo.')}${darkCard('crosshair','DECIDIR','Use informações
+                    para apoiar decisões operacionais mais rápidas.')}
+                </div>
+                <p class="mt-12 text-2xl font-semibold">
+                    Seu evento precisa de água. Sua operação precisa de dados.
+                </p>
+            </div>
+        </section>
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="eyebrow">04 / Funcionamento</p>
+                <h2 class="section-title">Do ponto de hidratação ao dado.</h2>
+                <p class="body-copy mb-12">
+                    O SGH conecta a operação física à inteligência digital.
+                </p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    ${step('01','MONITORE','Os pontos de hidratação geram
+                    informações acompanhadas pela
+                    plataforma.')}${step('02','CENTRALIZE','Os dados da operação
+                    são organizados em um ambiente
+                    único.')}${step('03','VISUALIZE','A equipe acompanha
+                    indicadores relevantes para a
+                    operação.')}${step('04','ANALISE','Os dados ajudam a
+                    identificar padrões, demandas e
+                    comportamentos.')}${step('05','DECIDA','A informação apoia
+                    decisões durante e após o evento.')}
+                </div>
+                <div
+                    class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold text-brand-700"
+                >
+                    Dispenser / Sensor
+                    <i data-lucide="arrow-right" class="w-4"></i> Conectividade
+                    <i data-lucide="arrow-right" class="w-4"></i> Plataforma
+                    <i data-lucide="arrow-right" class="w-4"></i> Dashboard
+                    <i data-lucide="arrow-right" class="w-4"></i> Decisão
+                </div>
+            </div>
+        </section>
+        <section id="beneficios" class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="eyebrow">05 / Benefícios</p>
+                <h2 class="section-title max-w-3xl">
+                    Mais controle para quem produz. Mais inteligência para quem
+                    opera.
+                </h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+                    ${card('bar-chart-3','VISIBILIDADE','Tenha uma visão mais
+                    clara do comportamento da hidratação durante o
+                    evento.')}${card('zap','AGILIDADE','Informações
+                    centralizadas ajudam a equipe a responder mais
+                    rapidamente.')}${card('map','CONTROLE DOS PONTOS','Acompanhe
+                    diferentes pontos de hidratação em uma única
+                    plataforma.')}${card('droplets','GESTÃO DO
+                    CONSUMO','Transforme informações de consumo em indicadores
+                    para análise
+                    operacional.')}${card('history','HISTÓRICO','Preserve dados
+                    e utilize experiências anteriores para melhorar o
+                    planejamento.')}${card('leaf','EFICIÊNCIA','Identifique
+                    padrões e oportunidades para tornar a operação mais
+                    eficiente.')}
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-slate-950 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+            <div class="relative max-w-4xl mx-auto px-4 text-center">
+                <p class="eyebrow-dark">06 / A mudança de perspectiva</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-7">
+                    Não é apenas sobre água.
+                </h2>
+                <p class="text-xl text-slate-300 leading-relaxed">
+                    É sobre saber o que está acontecendo na sua operação.<br />É
+                    transformar consumo em informação.<br />Informação em
+                    análise.<br />E análise em decisão.
+                </p>
+                <div
+                    class="my-10 inline-block px-6 py-4 rounded-xl border border-brand-500/40 bg-brand-500/10 text-brand-300 text-xl font-semibold"
+                >
+                    Hidratação + Dados + Operação = Inteligência para eventos.
+                </div>
+                <p class="text-slate-400">
+                    O SGH aproxima a gestão daquilo que acontece no campo,
+                    criando uma ponte entre a infraestrutura física e a tomada
+                    de decisão.
+                </p>
+            </div>
+        </section>
+        <section id="tecnologia" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="eyebrow">07 / Tecnologia</p>
+                <h2 class="section-title max-w-3xl">
+                    Tecnologia criada para operações reais.
+                </h2>
+                <p class="body-copy max-w-3xl">
+                    Por trás de uma experiência simples existe uma arquitetura
+                    desenvolvida para suportar informação, estabilidade,
+                    segurança e expansão.
+                </p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+                    ${card('radio-tower','IoT','Conectividade entre a
+                    infraestrutura física e a
+                    plataforma.')}${card('layout-dashboard','DASHBOARD','Visualização
+                    das informações relevantes da
+                    operação.')}${card('database','DADOS','Registro e
+                    organização das informações
+                    geradas.')}${card('scaling-3','ESCALABILIDADE','Arquitetura
+                    preparada para diferentes operações e
+                    volumes.')}${card('shield-check','SEGURANÇA','Estrutura
+                    pensada para proteção e confiabilidade dos
+                    dados.')}${card('users','MULTI-TENANT','Estrutura para
+                    atender diferentes clientes de forma independente.')}
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-brand-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="eyebrow">08 / Aplicações</p>
+                <h2 class="section-title max-w-3xl">
+                    Uma operação. Diferentes necessidades.
+                </h2>
+                <p class="body-copy max-w-3xl">
+                    Cada evento possui características próprias. O SGH foi
+                    concebido para acompanhar diferentes cenários operacionais.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-10">
+                    ${eventCard('🎪','Festivais')}${eventCard('🎤','Shows e
+                    grandes concertos')}${eventCard('🏟️','Arenas e grandes
+                    espaços')}${eventCard('🏢','Eventos
+                    corporativos')}${eventCard('🎭','Eventos
+                    culturais')}${eventCard('🏃','Eventos
+                    esportivos')}${eventCard('🎟️','Eventos de grande
+                    circulação')}
+                </div>
+                <a
+                    href="#contato"
+                    class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700"
+                    >Quero entender o SGH no meu evento
+                    <i data-lucide="arrow-right" class="w-4"></i
+                ></a>
+            </div>
+        </section>
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="eyebrow">09 / Público</p>
+                <h2 class="section-title max-w-3xl">
+                    Feito para quem transforma eventos em experiências.
+                </h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-12">
+                    ${card('briefcase','PRODUTORAS','Mais informação para apoiar
+                    o planejamento e a
+                    operação.')}${card('megaphone','PROMOTORES','Mais
+                    visibilidade sobre a estrutura de
+                    hidratação.')}${card('sparkles','AGÊNCIAS','Uma solução
+                    tecnológica para agregar inteligência à
+                    entrega.')}${card('building-2','VENUES E ARENAS','Mais
+                    controle sobre operações
+                    recorrentes.')}${card('clipboard-list','ORGANIZADORES','Dados
+                    para apoiar decisões antes, durante e depois.')}
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-14">
+                    <div>
+                        <p class="eyebrow">10 / Diferencial</p>
+                        <h2 class="section-title">Por que o SGH?</h2>
+                        <p class="body-copy">
+                            A hidratação costuma ser tratada como uma
+                            necessidade operacional. O SGH propõe transformar a
+                            hidratação em uma fonte de dados para gestão.
+                        </p>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        ${card('layers','GESTÃO CENTRALIZADA','Informações
+                        reunidas em uma plataforma.')}${card('eye','VISÃO
+                        OPERACIONAL','Dados pensados para quem toma
+                        decisões.')}${card('link','TECNOLOGIA +
+                        INFRAESTRUTURA','Integração entre o ambiente físico e o
+                        digital.')}${card('history','DADOS
+                        HISTÓRICOS','Informações para apoiar os próximos
+                        eventos.')}${card('maximize','ESCALABILIDADE','Conceito
+                        preparado para diferentes operações.')}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-brand-600 text-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <p
+                    class="text-brand-100 font-mono text-sm uppercase tracking-widest mb-3"
+                >
+                    11 / Histórico
+                </p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                    Seu evento termina. Os dados ficam.
+                </h2>
+                <p class="text-xl text-brand-100 mb-12">
+                    Os dados gerados durante a operação podem apoiar o
+                    planejamento das próximas experiências.
+                </p>
+                <div
+                    class="flex flex-col md:flex-row items-center justify-center gap-3"
+                >
+                    ${flow('EVENTO 01','Consumo e
+                    comportamento')}${arrow()}${flow('ANÁLISE','')}${arrow()}${flow('PLANEJAMENTO','')}${arrow()}${flow('EVENTO
+                    02','')}
+                </div>
+                <p class="mt-12 text-2xl font-semibold">
+                    O próximo evento não precisa começar do zero.
+                </p>
+            </div>
+        </section>
+        <section class="py-24 bg-white">
+            <div class="max-w-5xl mx-auto px-4 text-center">
+                <p class="eyebrow">12 / Eficiência</p>
+                <h2 class="section-title">
+                    Sustentabilidade também precisa de dados.
+                </h2>
+                <p class="body-copy max-w-3xl mx-auto">
+                    Uma operação mais sustentável começa pela capacidade de
+                    compreender seus próprios indicadores. O SGH pode apoiar
+                    análises relacionadas a consumo, eficiência operacional e
+                    planejamento.
+                </p>
+                <div
+                    class="mt-8 inline-flex items-center gap-3 text-xl font-semibold text-brand-700"
+                >
+                    <i data-lucide="bar-chart-3"></i>Medir é o primeiro passo
+                    para melhorar.
+                </div>
+                <p class="mt-6 text-sm text-slate-500">
+                    O SGH é uma ferramenta de apoio à gestão e à eficiência da
+                    operação.
+                </p>
+            </div>
+        </section>
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-14">
+                    <div>
+                        <p class="eyebrow">13 / Confiabilidade</p>
+                        <h2 class="section-title">
+                            Tecnologia não é apenas interface.
+                        </h2>
+                        <p class="body-copy">
+                            Uma estrutura pensada para suportar operações que
+                            exigem organização, confiabilidade e escalabilidade.
+                        </p>
+                    </div>
+                    <div class="space-y-4">
+                        ${card('file-code-2','ARQUITETURA
+                        DOCUMENTADA','Estrutura organizada para facilitar
+                        evolução e
+                        manutenção.')}${card('shield-check','SEGURANÇA','Boas
+                        práticas para proteção das informações e controle de
+                        acesso.')}${card('trending-up','ESCALABILIDADE','Estrutura
+                        preparada para crescer junto com as
+                        necessidades.')}${card('refresh-cw','EVOLUÇÃO
+                        CONTÍNUA','Tecnologia desenvolvida para receber novos
+                        recursos.')}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <p class="eyebrow">14 / Prova e validação</p>
+                <h2 class="section-title">
+                    Uma tecnologia criada por quem conhece eventos.
+                </h2>
+                <p class="body-copy">
+                    O SGH nasce da união entre conhecimento de tecnologia e
+                    experiência prática na produção e operação de eventos.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+                    ${card('flask-conical','EVENTOS-PILOTO','Em
+                    breve')}${card('bar-chart-3','RESULTADOS','Em
+                    breve')}${card('quote','DEPOIMENTOS','Em
+                    breve')}${card('handshake','PARCEIROS','Em breve')}
+                </div>
+                <p class="mt-12 text-xl font-semibold text-brand-700">
+                    A melhor tecnologia é aquela que resolve problemas reais.
+                </p>
+            </div>
+        </section>
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-4xl mx-auto px-4">
+                <p class="eyebrow">15 / FAQ</p>
+                <h2 class="section-title mb-10">Perguntas frequentes</h2>
+                <div class="space-y-3">
+                    ${faq('O SGH é um software ou um equipamento?','O SGH é uma
+                    solução de gestão que combina plataforma digital e
+                    infraestrutura tecnológica para monitoramento da operação
+                    hídrica, conforme cada projeto.')}${faq('O SGH funciona em
+                    eventos de diferentes tamanhos?','A solução foi concebida
+                    com escalabilidade para diferentes modelos de operação. A
+                    configuração ideal depende das características de cada
+                    evento.')}${faq('Preciso instalar o SGH permanentemente?','A
+                    configuração pode variar de acordo com o projeto e o modelo
+                    de operação. Nossa equipe pode avaliar a necessidade
+                    específica do evento.')}${faq('O SGH monitora o consumo?','A
+                    plataforma trabalha com dados relacionados à operação
+                    hídrica e ao consumo, utilizando a infraestrutura disponível
+                    em cada configuração.')}${faq('Posso utilizar o SGH em mais
+                    de um evento?','Sim. Os dados de diferentes operações podem
+                    ser acompanhados e utilizados para gerar histórico e
+                    aprendizado operacional.')}${faq('O SGH substitui minha
+                    equipe?','Não. O SGH é uma ferramenta de apoio à gestão:
+                    fornece informações para que as equipes tomem decisões com
+                    mais visibilidade.')}${faq('O SGH garante conformidade com a
+                    legislação?','O SGH pode apoiar a organização e o
+                    monitoramento, mas não substitui análise jurídica nem a
+                    responsabilidade do organizador pelas normas aplicáveis.')}
+                </div>
+            </div>
+        </section>
+        <section
+            id="contato"
+            class="py-24 bg-slate-950 text-white relative overflow-hidden"
+        >
+            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+            <div
+                class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14"
+            >
+                <div>
+                    <p class="eyebrow-dark">16 / Conversão</p>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                        Seu próximo evento pode começar com mais informação.
+                    </h2>
+                    <p class="text-lg text-slate-300 leading-relaxed mb-8">
+                        Descubra como o SGH pode transformar a gestão hídrica da
+                        sua próxima operação. Nossa equipe apresenta a
+                        plataforma e entende as características do seu evento.
+                    </p>
+                    <a
+                        href="#lead-form"
+                        class="inline-flex items-center gap-2 px-7 py-4 rounded-lg bg-brand-600 hover:bg-brand-500 font-semibold"
+                        >Solicitar demonstração <i data-lucide="arrow-right"></i
+                    ></a>
+                    <p class="mt-5 text-sm text-slate-500">
+                        Sem compromisso. Conheça a plataforma e descubra se o
+                        SGH faz sentido.
+                    </p>
+                </div>
+                <form
+                    id="lead-form"
+                    class="bg-slate-900 border border-slate-700 rounded-2xl p-6 md:p-8"
+                >
+                    <h3 class="text-2xl font-bold mb-6">
+                        Vamos conversar sobre seu próximo evento.
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        ${input('Nome','nome',true)}${input('Empresa','empresa',true)}${input('E-mail
+                        corporativo','email',true,'email')}
+                        ${input('WhatsApp','whatsapp')}${input('Cargo /
+                        função','cargo')}${input('Tipo de
+                        evento','tipo-evento')}${input('Participantes','participantes')}${input('Data
+                        prevista','data','', 'date')}
+                    </div>
+                    <label class="block text-sm text-slate-300 mt-4"
+                        >Conte brevemente sobre sua operação<textarea
+                            name="mensagem"
+                            rows="3"
+                            class="mt-2 w-full rounded-md bg-slate-800 border border-slate-700 px-3 py-3 text-white"
+                        ></textarea></label
+                    ><button
+                        type="submit"
+                        class="w-full mt-5 px-6 py-3 rounded-lg bg-brand-600 hover:bg-brand-500 font-semibold"
+                    >
+                        Solicitar demonstração
+                    </button>
+                    <p
+                        id="form-message"
+                        class="hidden mt-4 text-sm text-emerald-400"
+                    >
+                        Recebemos seus dados. Nossa equipe entrará em contato.
+                    </p>
+                    <p class="mt-4 text-xs text-slate-500">
+                        Seus dados serão utilizados exclusivamente para entrar
+                        em contato sobre o SGH.
+                    </p>
+                </form>
+            </div>
+        </section>
+        <footer class="bg-slate-950 border-t border-slate-800 pt-12 pb-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between gap-8">
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <div
+                                class="w-8 h-8 bg-brand-600 rounded-md flex items-center justify-center"
+                            >
+                                <i
+                                    data-lucide="layers"
+                                    class="text-white w-4 h-4"
+                                ></i>
+                            </div>
+                            <span class="text-white font-bold text-lg"
+                                >SGH
+                                <span class="text-brand-500">PRO</span></span
+                            >
+                        </div>
+                        <p class="text-slate-400">Sistema de Gestão Hídrica</p>
+                        <p class="text-slate-500 mt-3">
+                            Seu evento precisa de água.<br />Sua operação
+                            precisa de dados.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-x-12 gap-y-3 text-sm">
+                        <a
+                            href="#solucao"
+                            class="text-slate-400 hover:text-white"
+                            >Sobre o SGH</a
+                        ><a
+                            href="#tecnologia"
+                            class="text-slate-400 hover:text-white"
+                            >Tecnologia</a
+                        ><a
+                            href="#beneficios"
+                            class="text-slate-400 hover:text-white"
+                            >Benefícios</a
+                        ><a
+                            href="#contato"
+                            class="text-slate-400 hover:text-white"
+                            >Solicitar demonstração</a
+                        ><a
+                            href="#contato"
+                            class="text-slate-400 hover:text-white"
+                            >Contato</a
+                        ><a href="#" class="text-slate-400 hover:text-white"
+                            >Política de Privacidade</a
+                        ><a href="#" class="text-slate-400 hover:text-white"
+                            >Termos de Uso</a
+                        ><a href="#" class="text-slate-400 hover:text-white"
+                            >Instagram · LinkedIn</a
+                        >
+                    </div>
+                </div>
+                <div class="border-t border-slate-800 mt-10 pt-6">
+                    <p class="text-slate-500 text-sm">
+                        © 2026 SGH — Sistema de Gestão Hídrica. Todos os
+                        direitos reservados.
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>
+*** End Patch
