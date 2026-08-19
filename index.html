@@ -303,6 +303,13 @@
             class="relative pt-32 pb-32 lg:pt-44 lg:pb-40 overflow-hidden bg-slate-950 text-white"
         >
             <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+            <div class="bottle-field" aria-hidden="true">
+                <span class="bottle bottle-one"></span>
+                <span class="bottle bottle-two"></span>
+                <span class="bottle bottle-three"></span>
+                <span class="bottle bottle-four"></span>
+                <span class="bottle bottle-five"></span>
+            </div>
             <div
                 class="absolute top-1/4 left-1/4 w-[25rem] h-[25rem] bg-brand-500/20 blur-3xl animate-liquid pointer-events-none"
             ></div>
@@ -1399,11 +1406,18 @@
                 <form
                     id="lead-form"
                     class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl"
+                    aria-describedby="form-intro form-required-note"
                 >
                     <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-2.5">
                         <i data-lucide="calendar" class="w-6 h-6 text-brand-400"></i>
                         Vamos conversar sobre seu próximo evento.
                     </h3>
+                    <p id="form-intro" class="-mt-3 mb-5 text-sm leading-relaxed text-slate-400">
+                        Conte um pouco sobre sua operação para receber uma apresentação mais relevante.
+                    </p>
+                    <p id="form-required-note" class="mb-4 text-xs text-slate-500">
+                        Os campos marcados com * são obrigatórios.
+                    </p>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label for="input-nome" class="text-sm text-slate-300 block">
                             Nome *
@@ -1412,6 +1426,7 @@
                                 type="text"
                                 id="input-nome"
                                 name="nome"
+                                autocomplete="name"
                                 class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                                 placeholder="Seu nome"
                             />
@@ -1423,6 +1438,7 @@
                                 type="text"
                                 id="input-empresa"
                                 name="empresa"
+                                autocomplete="organization"
                                 class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                                 placeholder="Nome da empresa"
                             />
@@ -1434,6 +1450,7 @@
                                 type="email"
                                 id="input-email"
                                 name="email"
+                                autocomplete="email"
                                 class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                                 placeholder="seuemail@empresa.com"
                             />
@@ -1444,6 +1461,8 @@
                                 type="tel"
                                 id="input-whatsapp"
                                 name="whatsapp"
+                                autocomplete="tel"
+                                inputmode="tel"
                                 class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                                 placeholder="(11) 99999-9999"
                             />
@@ -1454,6 +1473,7 @@
                                 type="text"
                                 id="input-cargo"
                                 name="cargo"
+                                autocomplete="organization-title"
                                 class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                                 placeholder="Ex: Diretor de Produção"
                             />
@@ -1474,6 +1494,7 @@
                                 type="text"
                                 id="input-participantes"
                                 name="participantes"
+                                inputmode="numeric"
                                 class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                                 placeholder="Ex: 25.000 pessoas"
                             />
@@ -1505,13 +1526,15 @@
                         <span>Solicitar demonstração gratuita</span>
                         <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
-                    <div
+                    <output
                         id="form-message"
-                        class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm flex items-center gap-2"
+                        class="hidden mt-4 p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm flex items-center gap-2"
+                        aria-live="polite"
+                        tabindex="-1"
                     >
-                        <i data-lucide="check-circle" class="w-5 h-5 shrink-0"></i>
-                        <span>Recebemos seus dados com sucesso! Nossa equipe entrará em contato em breve.</span>
-                    </div>
+                        <i data-lucide="info" class="w-5 h-5 shrink-0"></i>
+                        <span>Dados validados. Este formulário está pronto para ser conectado ao atendimento do SGH.</span>
+                    </output>
                     <p class="mt-4 text-xs text-slate-500 text-center">
                         Seus dados estão protegidos e serão utilizados exclusivamente para contato sobre o SGH.
                     </p>

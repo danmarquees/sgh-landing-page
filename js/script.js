@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Smooth scroll into message if needed
             formMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            formMessage.focus({ preventScroll: true });
 
             // Reset the form fields
             leadForm.reset();
