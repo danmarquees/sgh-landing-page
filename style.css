@@ -1,0 +1,155 @@
+/* Smooth Scrolling & Navbar Offset */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+}
+
+/* Minimalist Icon Styling System */
+[data-lucide], svg.lucide {
+    stroke-width: 1.85px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Icon Box Badges */
+.icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Background Patterns */
+.bg-grid-pattern {
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+        );
+    background-size: 40px 40px;
+}
+
+/* Keyframe Animations */
+@keyframes subtle-glow {
+    0%,
+    100% {
+        opacity: 0.5;
+        box-shadow: 0 0 25px rgba(2, 132, 199, 0.2);
+    }
+    50% {
+        opacity: 0.85;
+        box-shadow: 0 0 45px rgba(14, 165, 233, 0.35);
+    }
+}
+
+.animate-glow {
+    animation: subtle-glow 4s ease-in-out infinite;
+}
+
+@keyframes liquid-morph {
+    0%,
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+}
+
+.animate-liquid {
+    animation: liquid-morph 8s ease-in-out infinite;
+}
+
+/* Multi-layer Fluid Wave Animation System */
+.wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.waves {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 3.5rem;
+    margin-bottom: -1px;
+}
+
+@media (min-width: 640px) {
+    .waves {
+        height: 4.5rem;
+    }
+}
+
+.waves use {
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.waves use:nth-child(1), .waves .wave-1 {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.waves use:nth-child(2), .waves .wave-2 {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.waves use:nth-child(3), .waves .wave-3 {
+    animation-delay: -4s;
+    animation-duration: 14s;
+}
+
+.waves use:nth-child(4), .waves .wave-4 {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+/* Details & FAQ */
+details summary {
+    list-style: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] {
+    border-color: rgba(14, 165, 233, 0.35);
+}
+
+/* Typography & Layout Utilities */
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+}
+
+.body-copy {
+    font-size: 1.125rem;
+    color: #475569;
+    line-height: 1.75;
+}

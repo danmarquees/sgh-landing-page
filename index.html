@@ -3,14 +3,20 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SGH | Sistema de Gestão Hídrica</title>
+        <title>SGH | Sistema de Gestão Hídrica para Grandes Eventos</title>
+        <meta
+            name="description"
+            content="O SGH conecta tecnologia, monitoramento e inteligência para transformar a gestão hídrica do seu evento em uma operação orientada por dados."
+        />
+        <!-- Tailwind CSS CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
         />
+        <!-- Lucide Icons (Minimalist Icon System) -->
         <script src="https://unpkg.com/lucide@latest"></script>
         <script>
             tailwind.config = {
@@ -21,6 +27,8 @@
                             brand: {
                                 50: "#f0f9ff",
                                 100: "#e0f2fe",
+                                200: "#bae6fd",
+                                300: "#7dd3fc",
                                 400: "#38bdf8",
                                 500: "#0ea5e9",
                                 600: "#0284c7",
@@ -34,187 +42,165 @@
                 },
             };
         </script>
-        <style>
-            .bg-grid-pattern {
-                background-image:
-                    linear-gradient(
-                        to right,
-                        rgba(255, 255, 255, 0.05) 1px,
-                        transparent 1px
-                    ),
-                    linear-gradient(
-                        to bottom,
-                        rgba(255, 255, 255, 0.05) 1px,
-                        transparent 1px
-                    );
-                background-size: 40px 40px;
-            }
-            @keyframes subtle-glow {
-                0%,
-                100% {
-                    opacity: 0.5;
-                }
-                50% {
-                    opacity: 0.8;
-                }
-            }
-            .animate-glow {
-                animation: subtle-glow 4s ease-in-out infinite;
-            }
-            @keyframes liquid-morph {
-                0%,
-                100% {
-                    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-                }
-                50% {
-                    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-                }
-            }
-            .animate-liquid {
-                animation: liquid-morph 8s ease-in-out infinite;
-            }
-            .waves > use {
-                animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5)
-                    infinite;
-            }
-            @keyframes move-forever {
-                0% {
-                    transform: translate3d(-90px, 0, 0);
-                }
-                100% {
-                    transform: translate3d(85px, 0, 0);
-                }
-            }
-            details summary {
-                list-style: none;
-            }
-            details summary::-webkit-details-marker {
-                display: none;
-            }
-            .eyebrow,
-            .eyebrow-dark {
-                display: none;
-            }
-            .section-title {
-                font-size: clamp(2rem, 4vw, 3rem);
-                font-weight: 700;
-                line-height: 1.15;
-                margin-bottom: 1.5rem;
-            }
-            .body-copy {
-                font-size: 1.125rem;
-                color: #475569;
-                line-height: 1.75;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body
         class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-brand-500 selection:text-white"
     >
+        <!-- SVG Definitions for Reusable Waves -->
+        <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <path
+                    id="gentle-wave"
+                    d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"
+                />
+            </defs>
+        </svg>
+
+        <!-- Navbar -->
         <nav
-            class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800"
+            class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300"
+            id="navbar"
         >
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-20">
-                    <a href="#inicio" class="flex items-center gap-2"
-                        ><div
-                            class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/30"
+                    <a
+                        href="#inicio"
+                        class="flex items-center gap-2.5 group"
+                        aria-label="SGH PRO Início"
+                    >
+                        <div
+                            class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform"
                         >
                             <i
                                 data-lucide="layers"
                                 class="text-white w-6 h-6"
                             ></i>
                         </div>
-                        <span class="text-white font-bold text-xl"
+                        <span class="text-white font-bold text-xl tracking-tight"
                             >SGH
-                            <span class="text-brand-500 font-black"
+                            <span class="text-brand-400 font-black"
                                 >PRO</span
                             ></span
-                        ></a
-                    >
+                        >
+                    </a>
                     <div class="hidden md:flex items-center space-x-7">
                         <a
                             href="#dor"
-                            class="text-slate-300 hover:text-white text-sm"
+                            class="text-slate-300 hover:text-white text-sm font-medium transition-colors"
                             >A operação</a
-                        ><a
-                            href="#solucao"
-                            class="text-slate-300 hover:text-white text-sm"
-                            >O SGH</a
-                        ><a
-                            href="#beneficios"
-                            class="text-slate-300 hover:text-white text-sm"
-                            >Benefícios</a
-                        ><a
-                            href="#tecnologia"
-                            class="text-slate-300 hover:text-white text-sm"
-                            >Tecnologia</a
-                        ><a
-                            href="#contato"
-                            class="bg-brand-600 hover:bg-brand-500 text-white px-5 py-2.5 rounded-md font-medium text-sm"
-                            >Solicitar demonstração</a
                         >
+                        <a
+                            href="#solucao"
+                            class="text-slate-300 hover:text-white text-sm font-medium transition-colors"
+                            >O SGH</a
+                        >
+                        <a
+                            href="#beneficios"
+                            class="text-slate-300 hover:text-white text-sm font-medium transition-colors"
+                            >Benefícios</a
+                        >
+                        <a
+                            href="#tecnologia"
+                            class="text-slate-300 hover:text-white text-sm font-medium transition-colors"
+                            >Tecnologia</a
+                        >
+                        <a
+                            href="#faq"
+                            class="text-slate-300 hover:text-white text-sm font-medium transition-colors"
+                            >FAQ</a
+                        >
+                        <a
+                            href="#contato"
+                            class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-5 py-2.5 rounded-lg font-semibold text-sm shadow-md shadow-brand-600/30 hover:shadow-lg hover:shadow-brand-500/40 transition-all"
+                        >
+                            Solicitar demonstração
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
                     </div>
                     <button
                         id="mobile-menu-btn"
-                        class="md:hidden text-slate-300"
-                        aria-label="Abrir menu"
+                        class="md:hidden text-slate-300 hover:text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
+                        aria-label="Abrir menu de navegação"
+                        aria-expanded="false"
                     >
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
+            <!-- Mobile Menu Dropdown -->
             <div
                 id="mobile-menu"
-                class="hidden md:hidden bg-slate-900 border-b border-slate-800"
+                class="hidden md:hidden bg-slate-900/95 backdrop-blur-md border-b border-slate-800"
             >
-                <div class="px-4 py-3 space-y-1">
-                    <a href="#dor" class="block py-2 text-slate-300"
+                <div class="px-4 pt-2 pb-5 space-y-2">
+                    <a
+                        href="#dor"
+                        class="block py-2.5 px-3 rounded-md text-slate-200 hover:bg-slate-800 font-medium"
                         >A operação</a
-                    ><a href="#solucao" class="block py-2 text-slate-300"
+                    >
+                    <a
+                        href="#solucao"
+                        class="block py-2.5 px-3 rounded-md text-slate-200 hover:bg-slate-800 font-medium"
                         >O SGH</a
-                    ><a href="#beneficios" class="block py-2 text-slate-300"
+                    >
+                    <a
+                        href="#beneficios"
+                        class="block py-2.5 px-3 rounded-md text-slate-200 hover:bg-slate-800 font-medium"
                         >Benefícios</a
-                    ><a
+                    >
+                    <a
+                        href="#tecnologia"
+                        class="block py-2.5 px-3 rounded-md text-slate-200 hover:bg-slate-800 font-medium"
+                        >Tecnologia</a
+                    >
+                    <a
+                        href="#faq"
+                        class="block py-2.5 px-3 rounded-md text-slate-200 hover:bg-slate-800 font-medium"
+                        >FAQ</a
+                    >
+                    <a
                         href="#contato"
-                        class="block py-2 text-brand-400 font-bold"
+                        class="block py-3 px-3 rounded-md text-center text-white bg-brand-600 hover:bg-brand-500 font-semibold mt-2"
                         >Solicitar demonstração</a
                     >
                 </div>
             </div>
         </nav>
+
+        <!-- Hero Section -->
         <header
             id="inicio"
-            class="relative pt-32 pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-slate-950 text-white"
+            class="relative pt-32 pb-32 lg:pt-44 lg:pb-40 overflow-hidden bg-slate-950 text-white"
         >
-            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
             <div
-                class="absolute top-1/4 left-1/4 w-[25rem] h-[25rem] bg-brand-500/20 blur-2xl animate-liquid"
+                class="absolute top-1/4 left-1/4 w-[25rem] h-[25rem] bg-brand-500/20 blur-3xl animate-liquid pointer-events-none"
             ></div>
             <div
-                class="absolute top-1/3 right-1/4 w-[30rem] h-[30rem] bg-cyan-500/20 blur-2xl animate-liquid"
+                class="absolute top-1/3 right-1/4 w-[30rem] h-[30rem] bg-cyan-500/20 blur-3xl animate-liquid pointer-events-none"
             ></div>
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-14 items-center">
                     <div>
                         <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-brand-400 text-sm font-medium mb-7"
+                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-brand-400 text-sm font-medium mb-7 shadow-inner"
                         >
                             <span
-                                class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"
-                            ></span
-                            >SGH | Sistema de Gestão Hídrica
+                                class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"
+                            ></span>
+                            SGH | Sistema de Gestão Hídrica
                         </div>
                         <h1
-                            class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight"
+                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight"
                         >
                             Transforme a hidratação do seu evento em
                             <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-400"
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-cyan-300 to-indigo-400"
                                 >dados.</span
                             >
                         </h1>
-                        <p class="text-lg text-slate-300 mb-9 leading-relaxed">
+                        <p class="text-lg sm:text-xl text-slate-300 mb-9 leading-relaxed">
                             O SGH conecta tecnologia, monitoramento e gestão
                             para dar mais visibilidade à operação hídrica do seu
                             evento, ajudando sua equipe a acompanhar o consumo e
@@ -223,114 +209,116 @@
                         <div class="flex flex-col sm:flex-row gap-4">
                             <a
                                 href="#contato"
-                                class="px-7 py-4 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-semibold text-lg text-center shadow-[0_0_20px_rgba(2,132,199,.4)]"
-                                >Solicitar demonstração</a
-                            ><a
+                                class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-lg text-center shadow-[0_0_25px_rgba(2,132,199,.45)] hover:shadow-[0_0_35px_rgba(14,165,233,.6)] transition-all"
+                            >
+                                Solicitar demonstração
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </a>
+                            <a
                                 href="#solucao"
-                                class="px-7 py-4 rounded-lg bg-slate-800/80 border border-slate-700 text-white font-semibold text-lg text-center"
+                                class="px-7 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-semibold text-lg text-center transition-all"
                                 >Conhecer o SGH</a
                             >
                         </div>
-                        <p class="mt-5 text-sm text-slate-500">
-                            Tecnologia desenvolvida para operações de eventos.
+                        <p class="mt-5 text-sm text-slate-400 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-400"></i>
+                            Tecnologia desenvolvida para operações de eventos em tempo real.
                         </p>
                     </div>
+                    <!-- Live Dashboard Mockup -->
                     <div
-                        class="rounded-2xl bg-slate-900 border border-slate-700 p-5 shadow-2xl animate-glow"
+                        class="rounded-2xl bg-slate-900/90 border border-slate-700/80 p-5 sm:p-6 shadow-2xl animate-glow backdrop-blur-sm"
                     >
                         <div
                             class="flex items-center justify-between border-b border-slate-800 pb-4 mb-5"
                         >
-                            <span class="font-mono text-xs text-slate-500"
-                                >SGH / OPERAÇÃO AO VIVO</span
-                            ><span class="text-xs text-emerald-400"
-                                >● Online</span
+                            <span class="font-mono text-xs text-slate-400 tracking-wider font-semibold flex items-center gap-2"
+                                ><i data-lucide="activity" class="w-4 h-4 text-brand-400"></i> SGH / OPERAÇÃO AO VIVO</span
+                            >
+                            <span class="inline-flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 font-medium"
+                                ><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>Online</span
                             >
                         </div>
-                        <div class="grid grid-cols-2 gap-3 mb-4">
-                            <div class="bg-slate-800 p-4 rounded-lg">
-                                <p class="text-xs text-slate-500">
+                        <div class="grid grid-cols-2 gap-3.5 mb-4">
+                            <div class="bg-slate-800/90 border border-slate-700/50 p-4 rounded-xl">
+                                <p class="text-xs text-slate-400 font-medium flex items-center gap-1.5">
+                                    <i data-lucide="droplet" class="w-3.5 h-3.5 text-brand-400"></i>
                                     Consumo total
                                 </p>
-                                <p class="text-2xl font-bold text-white mt-1">
+                                <p class="text-2xl sm:text-3xl font-bold text-white mt-1">
                                     18.420
-                                    <span class="text-sm text-brand-400"
+                                    <span class="text-base text-brand-400 font-semibold"
                                         >L</span
                                     >
                                 </p>
                             </div>
-                            <div class="bg-slate-800 p-4 rounded-lg">
-                                <p class="text-xs text-slate-500">
+                            <div class="bg-slate-800/90 border border-slate-700/50 p-4 rounded-xl">
+                                <p class="text-xs text-slate-400 font-medium flex items-center gap-1.5">
+                                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
                                     Pontos ativos
                                 </p>
-                                <p class="text-2xl font-bold text-white mt-1">
+                                <p class="text-2xl sm:text-3xl font-bold text-white mt-1">
                                     24
-                                    <span class="text-sm text-emerald-400"
+                                    <span class="text-base text-emerald-400 font-semibold"
                                         >/ 24</span
                                     >
                                 </p>
                             </div>
                         </div>
-                        <div class="bg-slate-800 rounded-lg p-4">
+                        <div class="bg-slate-800/90 border border-slate-700/50 rounded-xl p-4">
                             <div
-                                class="flex justify-between text-xs text-slate-400 mb-4"
+                                class="flex justify-between text-xs text-slate-400 mb-3"
                             >
-                                <span>Mapa de hidratação</span
-                                ><span class="text-brand-400"
-                                    >Atualizado agora</span
+                                <span class="font-medium text-slate-300 flex items-center gap-1.5">
+                                    <i data-lucide="map" class="w-3.5 h-3.5 text-brand-400"></i>
+                                    Mapa de hidratação
+                                </span>
+                                <span class="text-brand-400 font-medium flex items-center gap-1"
+                                    ><span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span>Atualizado agora</span
                                 >
                             </div>
                             <div
-                                class="h-32 rounded bg-slate-950 relative overflow-hidden bg-grid-pattern"
+                                class="h-36 rounded-lg bg-slate-950 relative overflow-hidden bg-grid-pattern border border-slate-800"
                             >
                                 <span
-                                    class="absolute top-7 left-1/4 w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_14px_#34d399]"
-                                ></span
-                                ><span
-                                    class="absolute top-16 left-1/2 w-3 h-3 rounded-full bg-brand-400 shadow-[0_0_14px_#38bdf8]"
-                                ></span
-                                ><span
-                                    class="absolute top-10 right-1/4 w-3 h-3 rounded-full bg-amber-400 shadow-[0_0_14px_#fbbf24]"
-                                ></span
-                                ><span
-                                    class="absolute bottom-6 left-1/3 w-3 h-3 rounded-full bg-brand-400 shadow-[0_0_14px_#38bdf8]"
+                                    class="absolute top-8 left-1/4 w-3.5 h-3.5 rounded-full bg-emerald-400 shadow-[0_0_16px_#34d399] animate-pulse"
+                                    title="Ponto 01 - Normal"
+                                ></span>
+                                <span
+                                    class="absolute top-16 left-1/2 w-3.5 h-3.5 rounded-full bg-brand-400 shadow-[0_0_16px_#38bdf8] animate-pulse"
+                                    title="Ponto 02 - Ativo"
+                                ></span>
+                                <span
+                                    class="absolute top-10 right-1/4 w-3.5 h-3.5 rounded-full bg-amber-400 shadow-[0_0_16px_#fbbf24] animate-pulse"
+                                    title="Ponto 03 - Alta Demanda"
+                                ></span>
+                                <span
+                                    class="absolute bottom-8 left-1/3 w-3.5 h-3.5 rounded-full bg-brand-400 shadow-[0_0_16px_#38bdf8] animate-pulse"
+                                    title="Ponto 04 - Ativo"
                                 ></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div
-                class="absolute bottom-0 left-0 w-full overflow-hidden leading-none"
-            >
-                <svg
-                    class="block w-full h-16"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 24 150 28"
-                    preserveAspectRatio="none"
-                >
-                    <defs>
-                        <path
-                            id="gentle-wave"
-                            d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"
-                        />
-                    </defs>
-                    <g class="waves">
-                        <use
-                            href="#gentle-wave"
-                            x="48"
-                            fill="rgba(14,165,233,.3)"
-                        />
-                        <use href="#gentle-wave" x="48" y="4" fill="#f8fafc" />
+            <!-- Fluid Wave Divider (To Section 1: bg-slate-50) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.15)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(56,189,248,0.25)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(14,165,233,0.4)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#f8fafc" class="wave-4" />
                     </g>
                 </svg>
             </div>
         </header>
-        <section id="dor" class="py-24 bg-slate-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section 1: A dor -->
+        <section id="dor" class="relative pt-24 pb-32 lg:pb-36 bg-slate-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="max-w-3xl mb-12">
-                    <p class="eyebrow">01 / A dor</p>
-                    <h2 class="section-title">
+                    <h2 class="section-title text-slate-900">
                         A hidratação também é uma operação.
                     </h2>
                     <p class="body-copy">
@@ -340,32 +328,72 @@
                         equipes e responder rapidamente às mudanças durante a
                         operação.
                     </p>
-                    <p class="mt-5 text-xl font-semibold">
+                    <p class="mt-5 text-xl font-semibold text-slate-900">
                         E quando você não consegue enxergar a operação, fica
                         muito mais difícil gerenciá-la.
                     </p>
                 </div>
-                <p class="text-slate-500 mb-5">
+                <p class="text-slate-600 font-medium mb-6 text-lg">
                     Você sabe o que está acontecendo com a hidratação do seu
                     evento enquanto ele acontece?
                 </p>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                    ${card('droplets','CONSUMO','Quanto está sendo
-                    consumido?')}${card('map-pin','LOCALIZAÇÃO','Quais pontos
-                    apresentam maior demanda?')}${card('timer','DEMANDA','Em
-                    quais momentos o consumo
-                    aumenta?')}${card('truck','OPERAÇÃO','Onde sua equipe
-                    precisa atuar?')}${card('bar-chart-3','HISTÓRICO','O que os
-                    dados podem ensinar para o próximo?')}
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="droplets" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">CONSUMO</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Quanto está sendo consumido?</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">LOCALIZAÇÃO</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Quais pontos apresentam maior demanda?</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="timer" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">DEMANDA</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Em quais momentos o consumo aumenta?</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="truck" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">OPERAÇÃO</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Onde sua equipe precisa atuar?</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">HISTÓRICO</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">O que os dados podem ensinar para o próximo?</p>
+                    </article>
                 </div>
             </div>
+            <!-- Fluid Wave Divider (To Section 2: bg-white) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.06)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(14,165,233,0.14)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(14,165,233,0.22)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#ffffff" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section 2: O problema -->
+        <section id="problema" class="relative pt-24 pb-32 lg:pb-36 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid lg:grid-cols-2 gap-14 items-start">
                     <div>
-                        <p class="eyebrow">02 / O problema</p>
-                        <h2 class="section-title">
+                        <h2 class="section-title text-slate-900">
                             Sem dados, a gestão vira percepção.
                         </h2>
                         <p class="body-copy">
@@ -376,141 +404,274 @@
                         </p>
                     </div>
                     <div class="border-l-4 border-brand-500 pl-6">
-                        <p class="text-slate-500 mb-4">Situações comuns</p>
-                        <div class="space-y-3 text-slate-700">
-                            ${listItem('Reposição baseada em
-                            estimativas')}${listItem('Dificuldade para
-                            identificar pontos de maior
-                            demanda')}${listItem('Informações espalhadas entre
-                            diferentes equipes')}${listItem('Falta de histórico
-                            operacional')}${listItem('Desperdícios difíceis de
-                            identificar')}${listItem('Tempo de resposta maior
-                            diante de uma mudança')}
-                        </div>
-                        <p class="mt-8 text-xl font-semibold text-brand-700">
+                        <p class="text-slate-500 font-semibold uppercase tracking-wider text-xs mb-4">Situações comuns na operação</p>
+                        <ul class="space-y-3.5 text-slate-700">
+                            <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-1"></i><span>Reposição baseada em estimativas</span></li>
+                            <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-1"></i><span>Dificuldade para identificar pontos de maior demanda</span></li>
+                            <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-1"></i><span>Informações espalhadas entre diferentes equipes</span></li>
+                            <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-1"></i><span>Falta de histórico operacional</span></li>
+                            <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-1"></i><span>Desperdícios difíceis de identificar</span></li>
+                            <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 text-brand-500 shrink-0 mt-1"></i><span>Tempo de resposta maior diante de uma mudança</span></li>
+                        </ul>
+                        <p class="mt-8 text-xl font-bold text-brand-700">
                             O que você não consegue medir, dificilmente consegue
                             otimizar.
                         </p>
                     </div>
                 </div>
             </div>
+            <!-- Fluid Wave Divider (To Section 3: bg-brand-600) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(2,132,199,0.2)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(2,132,199,0.45)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(2,132,199,0.7)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#0284c7" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
+
+        <!-- Section 3: Conheça o SGH -->
         <section
             id="solucao"
-            class="py-24 bg-brand-600 text-white relative overflow-hidden"
+            class="relative pt-24 pb-32 lg:pb-36 bg-brand-600 text-white overflow-hidden"
         >
-            <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
-            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mb-14">
-                    <p
-                        class="text-brand-100 font-mono text-sm uppercase tracking-widest mb-3"
-                    >
-                        03 / Apresentação
-                    </p>
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
                         Conheça o SGH.
                     </h2>
-                    <p class="text-xl text-brand-100">
+                    <p class="text-xl text-brand-100 leading-relaxed">
                         Uma plataforma criada para transformar a gestão hídrica
                         do evento em uma operação orientada por dados.
                     </p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-5">
-                    ${darkCard('monitor','MONITORAR','Tenha visibilidade sobre
-                    os pontos e informações da
-                    operação.')}${darkCard('scan-line','ANALISAR','Transforme
-                    dados em indicadores e padrões de
-                    consumo.')}${darkCard('crosshair','DECIDIR','Use informações
-                    para apoiar decisões operacionais mais rápidas.')}
+                    <article class="bg-white/10 border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-5 text-brand-200">
+                            <i data-lucide="monitor" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-white">MONITORAR</h3>
+                        <p class="text-brand-100 text-sm leading-relaxed">Tenha visibilidade sobre os pontos e informações da operação em tempo real.</p>
+                    </article>
+                    <article class="bg-white/10 border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-5 text-brand-200">
+                            <i data-lucide="scan-line" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-white">ANALISAR</h3>
+                        <p class="text-brand-100 text-sm leading-relaxed">Transforme dados brutos em indicadores inteligentes e padrões de consumo.</p>
+                    </article>
+                    <article class="bg-white/10 border border-white/20 rounded-xl p-6 hover:bg-white/15 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-5 text-brand-200">
+                            <i data-lucide="crosshair" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-white">DECIDIR</h3>
+                        <p class="text-brand-100 text-sm leading-relaxed">Use informações consolidadas para apoiar decisões operacionais mais ágeis e assertivas.</p>
+                    </article>
                 </div>
-                <p class="mt-12 text-2xl font-semibold">
+                <p class="mt-12 text-2xl font-bold text-white">
                     Seu evento precisa de água. Sua operação precisa de dados.
                 </p>
             </div>
+            <!-- Fluid Wave Divider (To Section 4: bg-white) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.12)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.25)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.5)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#ffffff" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="eyebrow">04 / Funcionamento</p>
-                <h2 class="section-title">Do ponto de hidratação ao dado.</h2>
+
+        <!-- Section 4: Funcionamento -->
+        <section id="funcionamento" class="relative pt-24 pb-32 lg:pb-36 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="section-title text-slate-900">Do ponto de hidratação ao dado.</h2>
                 <p class="body-copy mb-12">
                     O SGH conecta a operação física à inteligência digital.
                 </p>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                    ${step('01','MONITORE','Os pontos de hidratação geram
-                    informações acompanhadas pela
-                    plataforma.')}${step('02','CENTRALIZE','Os dados da operação
-                    são organizados em um ambiente
-                    único.')}${step('03','VISUALIZE','A equipe acompanha
-                    indicadores relevantes para a
-                    operação.')}${step('04','ANALISE','Os dados ajudam a
-                    identificar padrões, demandas e
-                    comportamentos.')}${step('05','DECIDA','A informação apoia
-                    decisões durante e após o evento.')}
+                    <article class="border-t-4 border-brand-500 bg-slate-50 rounded-b-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-brand-600 font-mono text-sm font-bold">01</span>
+                            <i data-lucide="droplet" class="w-4 h-4 text-brand-500"></i>
+                        </div>
+                        <h3 class="font-bold mb-2 text-slate-900">MONITORE</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Os pontos de hidratação geram informações acompanhadas pela plataforma.</p>
+                    </article>
+                    <article class="border-t-4 border-brand-500 bg-slate-50 rounded-b-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-brand-600 font-mono text-sm font-bold">02</span>
+                            <i data-lucide="database" class="w-4 h-4 text-brand-500"></i>
+                        </div>
+                        <h3 class="font-bold mb-2 text-slate-900">CENTRALIZE</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Os dados da operação são organizados em um ambiente único e seguro.</p>
+                    </article>
+                    <article class="border-t-4 border-brand-500 bg-slate-50 rounded-b-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-brand-600 font-mono text-sm font-bold">03</span>
+                            <i data-lucide="layout-dashboard" class="w-4 h-4 text-brand-500"></i>
+                        </div>
+                        <h3 class="font-bold mb-2 text-slate-900">VISUALIZE</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">A equipe acompanha indicadores relevantes para a operação em tempo real.</p>
+                    </article>
+                    <article class="border-t-4 border-brand-500 bg-slate-50 rounded-b-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-brand-600 font-mono text-sm font-bold">04</span>
+                            <i data-lucide="trending-up" class="w-4 h-4 text-brand-500"></i>
+                        </div>
+                        <h3 class="font-bold mb-2 text-slate-900">ANALISE</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Os dados ajudam a identificar padrões, demandas e comportamentos do público.</p>
+                    </article>
+                    <article class="border-t-4 border-brand-500 bg-slate-50 rounded-b-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-brand-600 font-mono text-sm font-bold">05</span>
+                            <i data-lucide="check-check" class="w-4 h-4 text-brand-500"></i>
+                        </div>
+                        <h3 class="font-bold mb-2 text-slate-900">DECIDA</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">A informação apoia decisões estratégicas durante e após o evento.</p>
+                    </article>
                 </div>
                 <div
-                    class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold text-brand-700"
+                    class="mt-12 flex flex-wrap items-center justify-center gap-4 text-sm font-semibold text-brand-700 bg-brand-50 py-4 px-6 rounded-2xl border border-brand-100 shadow-sm"
                 >
-                    Dispenser / Sensor
-                    <i data-lucide="arrow-right" class="w-4"></i> Conectividade
-                    <i data-lucide="arrow-right" class="w-4"></i> Plataforma
-                    <i data-lucide="arrow-right" class="w-4"></i> Dashboard
-                    <i data-lucide="arrow-right" class="w-4"></i> Decisão
+                    <span class="inline-flex items-center gap-1.5"><i data-lucide="radio" class="w-4 h-4 text-brand-600"></i> Dispenser / Sensor</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-brand-400"></i>
+                    <span class="inline-flex items-center gap-1.5"><i data-lucide="wifi" class="w-4 h-4 text-brand-600"></i> Conectividade</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-brand-400"></i>
+                    <span class="inline-flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-brand-600"></i> Plataforma</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-brand-400"></i>
+                    <span class="inline-flex items-center gap-1.5"><i data-lucide="layout-dashboard" class="w-4 h-4 text-brand-600"></i> Dashboard</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-brand-400"></i>
+                    <span class="inline-flex items-center gap-1.5 text-brand-900 font-bold"><i data-lucide="sparkles" class="w-4 h-4 text-brand-600"></i> Decisão Inteligente</span>
                 </div>
             </div>
+            <!-- Fluid Wave Divider (To Section 5: bg-slate-50) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.06)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(14,165,233,0.14)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(14,165,233,0.22)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#f8fafc" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section id="beneficios" class="py-24 bg-slate-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="eyebrow">05 / Benefícios</p>
-                <h2 class="section-title max-w-3xl">
+
+        <!-- Section 5: Benefícios -->
+        <section id="beneficios" class="relative pt-24 pb-32 lg:pb-36 bg-slate-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="section-title max-w-3xl text-slate-900">
                     Mais controle para quem produz. Mais inteligência para quem
                     opera.
                 </h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
-                    ${card('bar-chart-3','VISIBILIDADE','Tenha uma visão mais
-                    clara do comportamento da hidratação durante o
-                    evento.')}${card('zap','AGILIDADE','Informações
-                    centralizadas ajudam a equipe a responder mais
-                    rapidamente.')}${card('map','CONTROLE DOS PONTOS','Acompanhe
-                    diferentes pontos de hidratação em uma única
-                    plataforma.')}${card('droplets','GESTÃO DO
-                    CONSUMO','Transforme informações de consumo em indicadores
-                    para análise
-                    operacional.')}${card('history','HISTÓRICO','Preserve dados
-                    e utilize experiências anteriores para melhorar o
-                    planejamento.')}${card('leaf','EFICIÊNCIA','Identifique
-                    padrões e oportunidades para tornar a operação mais
-                    eficiente.')}
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="eye" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">VISIBILIDADE</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Tenha uma visão mais clara do comportamento da hidratação durante o evento.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">AGILIDADE</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Informações centralizadas ajudam a equipe a responder mais rapidamente.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="map" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">CONTROLE DOS PONTOS</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Acompanhe diferentes pontos de hidratação em uma única plataforma.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="droplets" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">GESTÃO DO CONSUMO</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Transforme informações de consumo em indicadores para análise operacional.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="history" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">HISTÓRICO</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Preserve dados e utilize experiências anteriores para melhorar o planejamento.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="leaf" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">EFICIÊNCIA</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Identifique padrões e oportunidades para tornar a operação mais eficiente.</p>
+                    </article>
                 </div>
             </div>
+            <!-- Fluid Wave Divider (To Section 6: bg-slate-950) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.2)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(2,132,199,0.4)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(8,47,73,0.7)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#020617" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
-            <div class="relative max-w-4xl mx-auto px-4 text-center">
-                <p class="eyebrow-dark">06 / A mudança de perspectiva</p>
-                <h2 class="text-3xl md:text-5xl font-bold mb-7">
+
+        <!-- Section 6: A mudança de perspectiva -->
+        <section id="perspectiva" class="relative pt-24 pb-32 lg:pb-36 bg-slate-950 text-white overflow-hidden">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+            <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-7 tracking-tight">
                     Não é apenas sobre água.
                 </h2>
-                <p class="text-xl text-slate-300 leading-relaxed">
-                    É sobre saber o que está acontecendo na sua operação.<br />É
-                    transformar consumo em informação.<br />Informação em
-                    análise.<br />E análise em decisão.
+                <p class="text-xl sm:text-2xl text-slate-300 leading-relaxed font-light">
+                    É sobre saber o que está acontecendo na sua operação.<br />
+                    É transformar consumo em informação.<br />
+                    Informação em análise.<br />
+                    E análise em decisão.
                 </p>
                 <div
-                    class="my-10 inline-block px-6 py-4 rounded-xl border border-brand-500/40 bg-brand-500/10 text-brand-300 text-xl font-semibold"
+                    class="my-10 inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-brand-500/40 bg-brand-500/10 text-brand-300 text-lg sm:text-xl font-semibold shadow-inner"
                 >
+                    <i data-lucide="sparkles" class="w-5 h-5 text-brand-400"></i>
                     Hidratação + Dados + Operação = Inteligência para eventos.
                 </div>
-                <p class="text-slate-400">
+                <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
                     O SGH aproxima a gestão daquilo que acontece no campo,
                     criando uma ponte entre a infraestrutura física e a tomada
                     de decisão.
                 </p>
             </div>
+            <!-- Fluid Wave Divider (To Section 7: bg-white) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.15)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(56,189,248,0.3)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.6)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#ffffff" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section id="tecnologia" class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="eyebrow">07 / Tecnologia</p>
-                <h2 class="section-title max-w-3xl">
+
+        <!-- Section 7: Tecnologia -->
+        <section id="tecnologia" class="relative pt-24 pb-32 lg:pb-36 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="section-title max-w-3xl text-slate-900">
                     Tecnologia criada para operações reais.
                 </h2>
                 <p class="body-copy max-w-3xl">
@@ -519,355 +680,780 @@
                     segurança e expansão.
                 </p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
-                    ${card('radio-tower','IoT','Conectividade entre a
-                    infraestrutura física e a
-                    plataforma.')}${card('layout-dashboard','DASHBOARD','Visualização
-                    das informações relevantes da
-                    operação.')}${card('database','DADOS','Registro e
-                    organização das informações
-                    geradas.')}${card('scaling-3','ESCALABILIDADE','Arquitetura
-                    preparada para diferentes operações e
-                    volumes.')}${card('shield-check','SEGURANÇA','Estrutura
-                    pensada para proteção e confiabilidade dos
-                    dados.')}${card('users','MULTI-TENANT','Estrutura para
-                    atender diferentes clientes de forma independente.')}
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="radio-tower" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">IoT</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Conectividade entre a infraestrutura física e a plataforma.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">DASHBOARD</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Visualização das informações relevantes da operação de forma intuitiva.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="database" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">DADOS</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Registro e organização confiável das informações geradas durante o evento.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">ESCALABILIDADE</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Arquitetura preparada para diferentes operações e volumes de público.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">SEGURANÇA</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Estrutura pensada para proteção e confiabilidade contínua dos dados.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">MULTI-TENANT</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Estrutura para atender diferentes clientes e operações de forma independente.</p>
+                    </article>
                 </div>
             </div>
+            <!-- Fluid Wave Divider (To Section 8: bg-brand-50) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.08)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(14,165,233,0.18)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(14,165,233,0.3)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#f0f9ff" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-brand-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="eyebrow">08 / Aplicações</p>
-                <h2 class="section-title max-w-3xl">
+
+        <!-- Section 8: Aplicações -->
+        <section id="aplicacoes" class="relative pt-24 pb-32 lg:pb-36 bg-brand-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="section-title max-w-3xl text-slate-900">
                     Uma operação. Diferentes necessidades.
                 </h2>
                 <p class="body-copy max-w-3xl">
                     Cada evento possui características próprias. O SGH foi
                     concebido para acompanhar diferentes cenários operacionais.
                 </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-10">
-                    ${eventCard('🎪','Festivais')}${eventCard('🎤','Shows e
-                    grandes concertos')}${eventCard('🏟️','Arenas e grandes
-                    espaços')}${eventCard('🏢','Eventos
-                    corporativos')}${eventCard('🎭','Eventos
-                    culturais')}${eventCard('🏃','Eventos
-                    esportivos')}${eventCard('🎟️','Eventos de grande
-                    circulação')}
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-10">
+                    <div class="bg-white border border-brand-100 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="tent" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-semibold text-sm mt-3 text-slate-800">Festivais</p>
+                    </div>
+                    <div class="bg-white border border-brand-100 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="music" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-semibold text-sm mt-3 text-slate-800">Shows e grandes concertos</p>
+                    </div>
+                    <div class="bg-white border border-brand-100 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="building-2" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-semibold text-sm mt-3 text-slate-800">Arenas e estádios</p>
+                    </div>
+                    <div class="bg-white border border-brand-100 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="briefcase" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-semibold text-sm mt-3 text-slate-800">Eventos corporativos</p>
+                    </div>
+                    <div class="bg-white border border-brand-100 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="palette" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-semibold text-sm mt-3 text-slate-800">Eventos culturais</p>
+                    </div>
+                    <div class="bg-white border border-brand-100 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-semibold text-sm mt-3 text-slate-800">Eventos esportivos</p>
+                    </div>
+                    <div class="bg-white border border-brand-100 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="ticket" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-semibold text-sm mt-3 text-slate-800">Eventos de grande circulação</p>
+                    </div>
+                    <div class="bg-white border border-brand-100 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-all group">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="store" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-semibold text-sm mt-3 text-slate-800">Feiras e exposições</p>
+                    </div>
                 </div>
                 <a
                     href="#contato"
-                    class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700"
+                    class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 text-white font-semibold hover:bg-brand-700 shadow-md shadow-brand-600/30 transition-all"
                     >Quero entender o SGH no meu evento
-                    <i data-lucide="arrow-right" class="w-4"></i
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i
                 ></a>
             </div>
+            <!-- Fluid Wave Divider (To Section 9: bg-white) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.06)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(14,165,233,0.15)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(14,165,233,0.25)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#ffffff" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="eyebrow">09 / Público</p>
-                <h2 class="section-title max-w-3xl">
+
+        <!-- Section 9: Público -->
+        <section id="publico" class="relative pt-24 pb-32 lg:pb-36 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="section-title max-w-3xl text-slate-900">
                     Feito para quem transforma eventos em experiências.
                 </h2>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-12">
-                    ${card('briefcase','PRODUTORAS','Mais informação para apoiar
-                    o planejamento e a
-                    operação.')}${card('megaphone','PROMOTORES','Mais
-                    visibilidade sobre a estrutura de
-                    hidratação.')}${card('sparkles','AGÊNCIAS','Uma solução
-                    tecnológica para agregar inteligência à
-                    entrega.')}${card('building-2','VENUES E ARENAS','Mais
-                    controle sobre operações
-                    recorrentes.')}${card('clipboard-list','ORGANIZADORES','Dados
-                    para apoiar decisões antes, durante e depois.')}
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">PRODUTORAS</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Mais informação para apoiar o planejamento e a operação.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="megaphone" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">PROMOTORES</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Mais visibilidade sobre a estrutura e disponibilidade de hidratação.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">AGÊNCIAS</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Uma solução tecnológica para agregar inteligência à entrega do projeto.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="building-2" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">VENUES E ARENAS</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Mais controle e indicadores sobre operações recorrentes.</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                            <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">ORGANIZADORES</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Dados consolidados para apoiar decisões antes, durante e depois.</p>
+                    </article>
                 </div>
             </div>
+            <!-- Fluid Wave Divider (To Section 10: bg-slate-50) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.06)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(14,165,233,0.14)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(14,165,233,0.22)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#f8fafc" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-slate-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-14">
+
+        <!-- Section 10: Diferencial -->
+        <section id="diferencial" class="relative pt-24 pb-32 lg:pb-36 bg-slate-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-14 items-center">
                     <div>
-                        <p class="eyebrow">10 / Diferencial</p>
-                        <h2 class="section-title">Por que o SGH?</h2>
+                        <h2 class="section-title text-slate-900">Por que o SGH?</h2>
                         <p class="body-copy">
                             A hidratação costuma ser tratada como uma
-                            necessidade operacional. O SGH propõe transformar a
-                            hidratação em uma fonte de dados para gestão.
+                            necessidade operacional básica. O SGH propõe transformar a
+                            hidratação em uma fonte contínua de dados estratégicos para a gestão.
                         </p>
                     </div>
                     <div class="grid sm:grid-cols-2 gap-4">
-                        ${card('layers','GESTÃO CENTRALIZADA','Informações
-                        reunidas em uma plataforma.')}${card('eye','VISÃO
-                        OPERACIONAL','Dados pensados para quem toma
-                        decisões.')}${card('link','TECNOLOGIA +
-                        INFRAESTRUTURA','Integração entre o ambiente físico e o
-                        digital.')}${card('history','DADOS
-                        HISTÓRICOS','Informações para apoiar os próximos
-                        eventos.')}${card('maximize','ESCALABILIDADE','Conceito
-                        preparado para diferentes operações.')}
+                        <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                                <i data-lucide="layers" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">GESTÃO CENTRALIZADA</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Informações reunidas em uma plataforma única e intuitiva.</p>
+                        </article>
+                        <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                                <i data-lucide="eye" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">VISÃO OPERACIONAL</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Dados pensados especificamente para quem toma decisões no campo.</p>
+                        </article>
+                        <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                                <i data-lucide="link" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">TECNOLOGIA + INFRAESTRUTURA</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Integração perfeita entre o ambiente físico e o digital.</p>
+                        </article>
+                        <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                                <i data-lucide="history" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">DADOS HISTÓRICOS</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Informações consolidadas para apoiar os próximos eventos.</p>
+                        </article>
+                        <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform sm:col-span-2">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                                <i data-lucide="maximize-2" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">ESCALABILIDADE TOTAL</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Conceito e arquitetura preparados para diferentes portes e operações simultâneas.</p>
+                        </article>
                     </div>
                 </div>
             </div>
+            <!-- Fluid Wave Divider (To Section 11: bg-brand-600) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(2,132,199,0.2)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(2,132,199,0.45)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(2,132,199,0.7)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#0284c7" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-brand-600 text-white">
-            <div class="max-w-4xl mx-auto px-4 text-center">
-                <p
-                    class="text-brand-100 font-mono text-sm uppercase tracking-widest mb-3"
-                >
-                    11 / Histórico
-                </p>
-                <h2 class="text-3xl md:text-5xl font-bold mb-6">
+
+        <!-- Section 11: Histórico -->
+        <section id="historico" class="relative pt-24 pb-32 lg:pb-36 bg-brand-600 text-white overflow-hidden">
+            <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
                     Seu evento termina. Os dados ficam.
                 </h2>
-                <p class="text-xl text-brand-100 mb-12">
-                    Os dados gerados durante a operação podem apoiar o
+                <p class="text-xl text-brand-100 mb-12 leading-relaxed">
+                    Os dados gerados durante a operação apoiam diretamente o
                     planejamento das próximas experiências.
                 </p>
                 <div
                     class="flex flex-col md:flex-row items-center justify-center gap-3"
                 >
-                    ${flow('EVENTO 01','Consumo e
-                    comportamento')}${arrow()}${flow('ANÁLISE','')}${arrow()}${flow('PLANEJAMENTO','')}${arrow()}${flow('EVENTO
-                    02','')}
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-5 w-full md:w-48 text-center">
+                        <i data-lucide="calendar" class="w-5 h-5 text-brand-200 mx-auto mb-2"></i>
+                        <b class="text-white text-base">EVENTO 01</b>
+                        <span class="block text-sm text-brand-100 mt-1">Consumo e comportamento</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-5 h-5 text-brand-200"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-5 h-5 text-brand-200"></i>
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-5 w-full md:w-48 text-center">
+                        <i data-lucide="bar-chart-2" class="w-5 h-5 text-brand-200 mx-auto mb-2"></i>
+                        <b class="text-white text-base">ANÁLISE</b>
+                        <span class="block text-sm text-brand-100 mt-1">Padrões identificados</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-5 h-5 text-brand-200"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-5 h-5 text-brand-200"></i>
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-5 w-full md:w-48 text-center">
+                        <i data-lucide="sliders" class="w-5 h-5 text-brand-200 mx-auto mb-2"></i>
+                        <b class="text-white text-base">PLANEJAMENTO</b>
+                        <span class="block text-sm text-brand-100 mt-1">Ajustes estratégicos</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-5 h-5 text-brand-200"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-5 h-5 text-brand-200"></i>
+                    <div class="bg-white/10 border border-white/20 rounded-xl p-5 w-full md:w-48 text-center">
+                        <i data-lucide="award" class="w-5 h-5 text-brand-200 mx-auto mb-2"></i>
+                        <b class="text-white text-base">EVENTO 02</b>
+                        <span class="block text-sm text-brand-100 mt-1">Operação otimizada</span>
+                    </div>
                 </div>
-                <p class="mt-12 text-2xl font-semibold">
+                <p class="mt-12 text-2xl font-bold text-white">
                     O próximo evento não precisa começar do zero.
                 </p>
             </div>
+            <!-- Fluid Wave Divider (To Section 12: bg-white) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.12)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.25)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.5)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#ffffff" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-white">
-            <div class="max-w-5xl mx-auto px-4 text-center">
-                <p class="eyebrow">12 / Eficiência</p>
-                <h2 class="section-title">
+
+        <!-- Section 12: Eficiência & Sustentabilidade -->
+        <section id="eficiencia" class="relative pt-24 pb-32 lg:pb-36 bg-white overflow-hidden">
+            <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+                <h2 class="section-title text-slate-900">
                     Sustentabilidade também precisa de dados.
                 </h2>
                 <p class="body-copy max-w-3xl mx-auto">
                     Uma operação mais sustentável começa pela capacidade de
-                    compreender seus próprios indicadores. O SGH pode apoiar
-                    análises relacionadas a consumo, eficiência operacional e
-                    planejamento.
+                    compreender seus próprios indicadores. O SGH apoia
+                    análises detalhadas de consumo, eficiência operacional e
+                    redução de desperdícios.
                 </p>
                 <div
-                    class="mt-8 inline-flex items-center gap-3 text-xl font-semibold text-brand-700"
+                    class="mt-8 inline-flex items-center gap-3 text-xl font-bold text-brand-700 bg-brand-50 px-6 py-3 rounded-full border border-brand-100 shadow-sm"
                 >
-                    <i data-lucide="bar-chart-3"></i>Medir é o primeiro passo
-                    para melhorar.
+                    <i data-lucide="bar-chart-3" class="w-6 h-6 text-brand-600"></i>
+                    Medir é o primeiro passo para melhorar.
                 </div>
                 <p class="mt-6 text-sm text-slate-500">
                     O SGH é uma ferramenta de apoio à gestão e à eficiência da
-                    operação.
+                    operação sustentável.
                 </p>
             </div>
+            <!-- Fluid Wave Divider (To Section 13: bg-slate-50) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.06)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(14,165,233,0.14)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(14,165,233,0.22)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#f8fafc" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-slate-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-14">
+
+        <!-- Section 13: Confiabilidade & Arquitetura -->
+        <section id="confiabilidade" class="relative pt-24 pb-32 lg:pb-36 bg-slate-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-14 items-center">
                     <div>
-                        <p class="eyebrow">13 / Confiabilidade</p>
-                        <h2 class="section-title">
+                        <h2 class="section-title text-slate-900">
                             Tecnologia não é apenas interface.
                         </h2>
                         <p class="body-copy">
                             Uma estrutura pensada para suportar operações que
-                            exigem organização, confiabilidade e escalabilidade.
+                            exigem organização, confiabilidade e estabilidade sob alto volume.
                         </p>
                     </div>
                     <div class="space-y-4">
-                        ${card('file-code-2','ARQUITETURA
-                        DOCUMENTADA','Estrutura organizada para facilitar
-                        evolução e
-                        manutenção.')}${card('shield-check','SEGURANÇA','Boas
-                        práticas para proteção das informações e controle de
-                        acesso.')}${card('trending-up','ESCALABILIDADE','Estrutura
-                        preparada para crescer junto com as
-                        necessidades.')}${card('refresh-cw','EVOLUÇÃO
-                        CONTÍNUA','Tecnologia desenvolvida para receber novos
-                        recursos.')}
+                        <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                                <i data-lucide="file-code-2" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">ARQUITETURA DOCUMENTADA</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Estrutura organizada para facilitar evolução e manutenção contínua.</p>
+                        </article>
+                        <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">SEGURANÇA</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Boas práticas para proteção das informações e controle rigoroso de acesso.</p>
+                        </article>
+                        <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                                <i data-lucide="trending-up" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">ESCALABILIDADE</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Estrutura preparada para crescer junto com as necessidades da sua produtora.</p>
+                        </article>
+                        <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+                                <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">EVOLUÇÃO CONTÍNUA</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Tecnologia modular desenvolvida para receber novos recursos e integrações.</p>
+                        </article>
                     </div>
                 </div>
             </div>
+            <!-- Fluid Wave Divider (To Section 14: bg-white) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.06)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(14,165,233,0.14)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(14,165,233,0.22)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#ffffff" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
         </section>
-        <section class="py-24 bg-white">
-            <div class="max-w-4xl mx-auto px-4 text-center">
-                <p class="eyebrow">14 / Prova e validação</p>
-                <h2 class="section-title">
+
+        <!-- Section 14: Prova e validação -->
+        <section id="validacao" class="relative pt-24 pb-32 lg:pb-36 bg-white overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                <h2 class="section-title text-slate-900">
                     Uma tecnologia criada por quem conhece eventos.
                 </h2>
                 <p class="body-copy">
-                    O SGH nasce da união entre conhecimento de tecnologia e
-                    experiência prática na produção e operação de eventos.
+                    O SGH nasce da união entre conhecimento de ponta em tecnologia e
+                    experiência prática na produção e operação de grandes eventos.
                 </p>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-                    ${card('flask-conical','EVENTOS-PILOTO','Em
-                    breve')}${card('bar-chart-3','RESULTADOS','Em
-                    breve')}${card('quote','DEPOIMENTOS','Em
-                    breve')}${card('handshake','PARCEIROS','Em breve')}
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4 mx-auto">
+                            <i data-lucide="flask-conical" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">EVENTOS-PILOTO</h3>
+                        <p class="text-slate-500 text-sm">Em breve</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4 mx-auto">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">RESULTADOS</h3>
+                        <p class="text-slate-500 text-sm">Em breve</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4 mx-auto">
+                            <i data-lucide="quote" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">DEPOIMENTOS</h3>
+                        <p class="text-slate-500 text-sm">Em breve</p>
+                    </article>
+                    <article class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:-translate-y-1 transition-transform">
+                        <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center mb-4 mx-auto">
+                            <i data-lucide="handshake" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-sm tracking-wide mb-2 text-slate-900">PARCEIROS</h3>
+                        <p class="text-slate-500 text-sm">Em breve</p>
+                    </article>
                 </div>
-                <p class="mt-12 text-xl font-semibold text-brand-700">
+                <p class="mt-12 text-xl font-bold text-brand-700">
                     A melhor tecnologia é aquela que resolve problemas reais.
                 </p>
             </div>
-        </section>
-        <section class="py-24 bg-slate-50">
-            <div class="max-w-4xl mx-auto px-4">
-                <p class="eyebrow">15 / FAQ</p>
-                <h2 class="section-title mb-10">Perguntas frequentes</h2>
-                <div class="space-y-3">
-                    ${faq('O SGH é um software ou um equipamento?','O SGH é uma
-                    solução de gestão que combina plataforma digital e
-                    infraestrutura tecnológica para monitoramento da operação
-                    hídrica, conforme cada projeto.')}${faq('O SGH funciona em
-                    eventos de diferentes tamanhos?','A solução foi concebida
-                    com escalabilidade para diferentes modelos de operação. A
-                    configuração ideal depende das características de cada
-                    evento.')}${faq('Preciso instalar o SGH permanentemente?','A
-                    configuração pode variar de acordo com o projeto e o modelo
-                    de operação. Nossa equipe pode avaliar a necessidade
-                    específica do evento.')}${faq('O SGH monitora o consumo?','A
-                    plataforma trabalha com dados relacionados à operação
-                    hídrica e ao consumo, utilizando a infraestrutura disponível
-                    em cada configuração.')}${faq('Posso utilizar o SGH em mais
-                    de um evento?','Sim. Os dados de diferentes operações podem
-                    ser acompanhados e utilizados para gerar histórico e
-                    aprendizado operacional.')}${faq('O SGH substitui minha
-                    equipe?','Não. O SGH é uma ferramenta de apoio à gestão:
-                    fornece informações para que as equipes tomem decisões com
-                    mais visibilidade.')}${faq('O SGH garante conformidade com a
-                    legislação?','O SGH pode apoiar a organização e o
-                    monitoramento, mas não substitui análise jurídica nem a
-                    responsabilidade do organizador pelas normas aplicáveis.')}
-                </div>
+            <!-- Fluid Wave Divider (To Section 15: bg-slate-50) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.06)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(14,165,233,0.14)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(14,165,233,0.22)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#f8fafc" class="wave-4" />
+                    </g>
+                </svg>
             </div>
         </section>
+
+        <!-- Section 15: FAQ -->
+        <section id="faq" class="relative pt-24 pb-32 lg:pb-36 bg-slate-50 overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 relative z-10">
+                <div class="flex items-center justify-center gap-2 mb-3">
+                    <i data-lucide="help-circle" class="w-6 h-6 text-brand-600"></i>
+                    <span class="text-brand-600 font-semibold text-sm uppercase tracking-wider">Tire suas dúvidas</span>
+                </div>
+                <h2 class="section-title mb-10 text-slate-900 text-center">Perguntas frequentes</h2>
+                <div class="space-y-3.5">
+                    <details class="bg-white border border-slate-200 rounded-xl p-5 group shadow-sm transition-all">
+                        <summary class="flex justify-between items-center gap-4 cursor-pointer font-semibold text-slate-900 text-base sm:text-lg">
+                            O SGH é um software ou um equipamento?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
+                        </summary>
+                        <p class="text-slate-600 mt-4 pr-6 leading-relaxed text-sm sm:text-base border-t border-slate-100 pt-3">
+                            O SGH é uma solução de gestão completa que combina plataforma digital (dashboard e inteligência) e infraestrutura tecnológica integrada para monitoramento da operação hídrica, adaptada a cada projeto.
+                        </p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-5 group shadow-sm transition-all">
+                        <summary class="flex justify-between items-center gap-4 cursor-pointer font-semibold text-slate-900 text-base sm:text-lg">
+                            O SGH funciona em eventos de diferentes tamanhos?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
+                        </summary>
+                        <p class="text-slate-600 mt-4 pr-6 leading-relaxed text-sm sm:text-base border-t border-slate-100 pt-3">
+                            A solução foi concebida com arquitetura modular e escalabilidade para diferentes modelos de operação. A configuração ideal depende das características e da dimensão de cada evento.
+                        </p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-5 group shadow-sm transition-all">
+                        <summary class="flex justify-between items-center gap-4 cursor-pointer font-semibold text-slate-900 text-base sm:text-lg">
+                            Preciso instalar o SGH permanentemente?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
+                        </summary>
+                        <p class="text-slate-600 mt-4 pr-6 leading-relaxed text-sm sm:text-base border-t border-slate-100 pt-3">
+                            Não necessariamente. A configuração pode ser temporária para festivais e shows de curta duração, ou permanente para venues, estádios e arenas fixas.
+                        </p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-5 group shadow-sm transition-all">
+                        <summary class="flex justify-between items-center gap-4 cursor-pointer font-semibold text-slate-900 text-base sm:text-lg">
+                            O SGH monitora o consumo?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
+                        </summary>
+                        <p class="text-slate-600 mt-4 pr-6 leading-relaxed text-sm sm:text-base border-t border-slate-100 pt-3">
+                            Sim. A plataforma trabalha com dados em tempo real relacionados à operação hídrica e ao consumo pontual, permitindo acompanhar picos de demanda e fluxo por setor.
+                        </p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-5 group shadow-sm transition-all">
+                        <summary class="flex justify-between items-center gap-4 cursor-pointer font-semibold text-slate-900 text-base sm:text-lg">
+                            Posso utilizar o SGH em mais de um evento?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
+                        </summary>
+                        <p class="text-slate-600 mt-4 pr-6 leading-relaxed text-sm sm:text-base border-t border-slate-100 pt-3">
+                            Sim. Os dados de diferentes operações podem ser acompanhados e utilizados para gerar histórico comparativo e aprendizado operacional contínuo.
+                        </p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-5 group shadow-sm transition-all">
+                        <summary class="flex justify-between items-center gap-4 cursor-pointer font-semibold text-slate-900 text-base sm:text-lg">
+                            O SGH substitui minha equipe?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
+                        </summary>
+                        <p class="text-slate-600 mt-4 pr-6 leading-relaxed text-sm sm:text-base border-t border-slate-100 pt-3">
+                            Não. O SGH é uma ferramenta de apoio e empoderamento da gestão: ele fornece visibilidade e inteligência para que sua equipe tome decisões com muito mais velocidade e precisão.
+                        </p>
+                    </details>
+                    <details class="bg-white border border-slate-200 rounded-xl p-5 group shadow-sm transition-all">
+                        <summary class="flex justify-between items-center gap-4 cursor-pointer font-semibold text-slate-900 text-base sm:text-lg">
+                            O SGH garante conformidade com a legislação?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-600 group-open:rotate-180 transition-transform duration-200 shrink-0"></i>
+                        </summary>
+                        <p class="text-slate-600 mt-4 pr-6 leading-relaxed text-sm sm:text-base border-t border-slate-100 pt-3">
+                            O SGH apoia na organização, rastreabilidade e monitoramento dos pontos de água, fornecendo dados comprobatórios essenciais para o organizador atender às exigências legais e normas técnicas aplicáveis.
+                        </p>
+                    </details>
+                </div>
+            </div>
+            <!-- Fluid Wave Divider (To Section 16: bg-slate-950) -->
+            <div class="wave-divider">
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+                    <g>
+                        <use href="#gentle-wave" x="48" y="0" fill="rgba(14,165,233,0.2)" class="wave-1" />
+                        <use href="#gentle-wave" x="48" y="3" fill="rgba(2,132,199,0.4)" class="wave-2" />
+                        <use href="#gentle-wave" x="48" y="5" fill="rgba(8,47,73,0.7)" class="wave-3" />
+                        <use href="#gentle-wave" x="48" y="7" fill="#020617" class="wave-4" />
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Section 16: Conversão & Contato -->
         <section
             id="contato"
-            class="py-24 bg-slate-950 text-white relative overflow-hidden"
+            class="relative pt-24 pb-28 bg-slate-950 text-white overflow-hidden"
         >
-            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+            <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
             <div
-                class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14"
+                class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center"
             >
                 <div>
-                    <p class="eyebrow-dark">16 / Conversão</p>
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight">
                         Seu próximo evento pode começar com mais informação.
                     </h2>
                     <p class="text-lg text-slate-300 leading-relaxed mb-8">
                         Descubra como o SGH pode transformar a gestão hídrica da
                         sua próxima operação. Nossa equipe apresenta a
-                        plataforma e entende as características do seu evento.
+                        plataforma e analisa as características exclusivas do seu evento.
                     </p>
                     <a
                         href="#lead-form"
-                        class="inline-flex items-center gap-2 px-7 py-4 rounded-lg bg-brand-600 hover:bg-brand-500 font-semibold"
-                        >Solicitar demonstração <i data-lucide="arrow-right"></i
-                    ></a>
-                    <p class="mt-5 text-sm text-slate-500">
-                        Sem compromisso. Conheça a plataforma e descubra se o
-                        SGH faz sentido.
+                        class="inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 font-semibold shadow-lg shadow-brand-600/30 transition-all text-white"
+                    >
+                        Solicitar demonstração
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <p class="mt-5 text-sm text-slate-400">
+                        Sem compromisso. Conheça a plataforma e descubra o impacto positivo do SGH.
                     </p>
                 </div>
+                <!-- Lead Form -->
                 <form
                     id="lead-form"
-                    class="bg-slate-900 border border-slate-700 rounded-2xl p-6 md:p-8"
+                    class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl"
                 >
-                    <h3 class="text-2xl font-bold mb-6">
+                    <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-2.5">
+                        <i data-lucide="calendar" class="w-6 h-6 text-brand-400"></i>
                         Vamos conversar sobre seu próximo evento.
                     </h3>
                     <div class="grid sm:grid-cols-2 gap-4">
-                        ${input('Nome','nome',true)}${input('Empresa','empresa',true)}${input('E-mail
-                        corporativo','email',true,'email')}
-                        ${input('WhatsApp','whatsapp')}${input('Cargo /
-                        função','cargo')}${input('Tipo de
-                        evento','tipo-evento')}${input('Participantes','participantes')}${input('Data
-                        prevista','data','', 'date')}
+                        <label for="input-nome" class="text-sm text-slate-300 block">
+                            Nome *
+                            <input
+                                required
+                                type="text"
+                                id="input-nome"
+                                name="nome"
+                                class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
+                                placeholder="Seu nome"
+                            />
+                        </label>
+                        <label for="input-empresa" class="text-sm text-slate-300 block">
+                            Empresa *
+                            <input
+                                required
+                                type="text"
+                                id="input-empresa"
+                                name="empresa"
+                                class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
+                                placeholder="Nome da empresa"
+                            />
+                        </label>
+                        <label for="input-email" class="text-sm text-slate-300 block">
+                            E-mail corporativo *
+                            <input
+                                required
+                                type="email"
+                                id="input-email"
+                                name="email"
+                                class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
+                                placeholder="seuemail@empresa.com"
+                            />
+                        </label>
+                        <label for="input-whatsapp" class="text-sm text-slate-300 block">
+                            WhatsApp
+                            <input
+                                type="tel"
+                                id="input-whatsapp"
+                                name="whatsapp"
+                                class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
+                                placeholder="(11) 99999-9999"
+                            />
+                        </label>
+                        <label for="input-cargo" class="text-sm text-slate-300 block">
+                            Cargo / função
+                            <input
+                                type="text"
+                                id="input-cargo"
+                                name="cargo"
+                                class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
+                                placeholder="Ex: Diretor de Produção"
+                            />
+                        </label>
+                        <label for="input-tipo-evento" class="text-sm text-slate-300 block">
+                            Tipo de evento
+                            <input
+                                type="text"
+                                id="input-tipo-evento"
+                                name="tipo-evento"
+                                class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
+                                placeholder="Ex: Festival de Música"
+                            />
+                        </label>
+                        <label for="input-participantes" class="text-sm text-slate-300 block">
+                            Participantes estimados
+                            <input
+                                type="text"
+                                id="input-participantes"
+                                name="participantes"
+                                class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
+                                placeholder="Ex: 25.000 pessoas"
+                            />
+                        </label>
+                        <label for="input-data" class="text-sm text-slate-300 block">
+                            Data prevista
+                            <input
+                                type="date"
+                                id="input-data"
+                                name="data"
+                                class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
+                            />
+                        </label>
                     </div>
-                    <label class="block text-sm text-slate-300 mt-4"
-                        >Conte brevemente sobre sua operação<textarea
+                    <label for="input-mensagem" class="block text-sm text-slate-300 mt-4">
+                        Conte brevemente sobre sua operação
+                        <textarea
+                            id="input-mensagem"
                             name="mensagem"
                             rows="3"
-                            class="mt-2 w-full rounded-md bg-slate-800 border border-slate-700 px-3 py-3 text-white"
-                        ></textarea></label
-                    ><button
+                            class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
+                            placeholder="Descreva detalhes, dúvidas ou datas importantes..."
+                        ></textarea>
+                    </label>
+                    <button
                         type="submit"
-                        class="w-full mt-5 px-6 py-3 rounded-lg bg-brand-600 hover:bg-brand-500 font-semibold"
+                        class="w-full mt-5 px-6 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-base shadow-lg shadow-brand-600/30 hover:shadow-brand-500/40 transition-all cursor-pointer inline-flex items-center justify-center gap-2"
                     >
-                        Solicitar demonstração
+                        <span>Solicitar demonstração gratuita</span>
+                        <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
-                    <p
+                    <div
                         id="form-message"
-                        class="hidden mt-4 text-sm text-emerald-400"
+                        class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm flex items-center gap-2"
                     >
-                        Recebemos seus dados. Nossa equipe entrará em contato.
-                    </p>
-                    <p class="mt-4 text-xs text-slate-500">
-                        Seus dados serão utilizados exclusivamente para entrar
-                        em contato sobre o SGH.
+                        <i data-lucide="check-circle" class="w-5 h-5 shrink-0"></i>
+                        <span>Recebemos seus dados com sucesso! Nossa equipe entrará em contato em breve.</span>
+                    </div>
+                    <p class="mt-4 text-xs text-slate-500 text-center">
+                        Seus dados estão protegidos e serão utilizados exclusivamente para contato sobre o SGH.
                     </p>
                 </form>
             </div>
         </section>
-        <footer class="bg-slate-950 border-t border-slate-800 pt-12 pb-8">
+
+        <!-- Footer -->
+        <footer class="bg-slate-950 border-t border-slate-800 pt-16 pb-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row justify-between gap-8">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
+                <div class="flex flex-col md:flex-row justify-between gap-10">
+                    <div class="max-w-sm">
+                        <div class="flex items-center gap-2.5 mb-4">
                             <div
-                                class="w-8 h-8 bg-brand-600 rounded-md flex items-center justify-center"
+                                class="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center shadow-md shadow-brand-600/30"
                             >
                                 <i
                                     data-lucide="layers"
-                                    class="text-white w-4 h-4"
+                                    class="text-white w-5 h-5"
                                 ></i>
                             </div>
-                            <span class="text-white font-bold text-lg"
+                            <span class="text-white font-bold text-xl tracking-tight"
                                 >SGH
-                                <span class="text-brand-500">PRO</span></span
+                                <span class="text-brand-400">PRO</span></span
                             >
                         </div>
-                        <p class="text-slate-400">Sistema de Gestão Hídrica</p>
-                        <p class="text-slate-500 mt-3">
+                        <p class="text-slate-400 font-medium">Sistema de Gestão Hídrica</p>
+                        <p class="text-slate-500 mt-3 text-sm leading-relaxed">
                             Seu evento precisa de água.<br />Sua operação
                             precisa de dados.
                         </p>
                     </div>
-                    <div class="grid grid-cols-2 gap-x-12 gap-y-3 text-sm">
-                        <a
-                            href="#solucao"
-                            class="text-slate-400 hover:text-white"
-                            >Sobre o SGH</a
-                        ><a
-                            href="#tecnologia"
-                            class="text-slate-400 hover:text-white"
-                            >Tecnologia</a
-                        ><a
-                            href="#beneficios"
-                            class="text-slate-400 hover:text-white"
-                            >Benefícios</a
-                        ><a
-                            href="#contato"
-                            class="text-slate-400 hover:text-white"
-                            >Solicitar demonstração</a
-                        ><a
-                            href="#contato"
-                            class="text-slate-400 hover:text-white"
-                            >Contato</a
-                        ><a href="#" class="text-slate-400 hover:text-white"
-                            >Política de Privacidade</a
-                        ><a href="#" class="text-slate-400 hover:text-white"
-                            >Termos de Uso</a
-                        ><a href="#" class="text-slate-400 hover:text-white"
-                            >Instagram · LinkedIn</a
-                        >
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-4 text-sm">
+                        <div>
+                            <p class="text-slate-300 font-semibold mb-3">Navegação</p>
+                            <ul class="space-y-2.5">
+                                <li><a href="#dor" class="text-slate-400 hover:text-white transition-colors">A Operação</a></li>
+                                <li><a href="#solucao" class="text-slate-400 hover:text-white transition-colors">Sobre o SGH</a></li>
+                                <li><a href="#beneficios" class="text-slate-400 hover:text-white transition-colors">Benefícios</a></li>
+                                <li><a href="#tecnologia" class="text-slate-400 hover:text-white transition-colors">Tecnologia</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-slate-300 font-semibold mb-3">Soluções</p>
+                            <ul class="space-y-2.5">
+                                <li><a href="#aplicacoes" class="text-slate-400 hover:text-white transition-colors">Aplicações</a></li>
+                                <li><a href="#publico" class="text-slate-400 hover:text-white transition-colors">Para Produtoras</a></li>
+                                <li><a href="#faq" class="text-slate-400 hover:text-white transition-colors">Perguntas Frequentes</a></li>
+                                <li><a href="#contato" class="text-slate-400 hover:text-white transition-colors">Solicitar Demo</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <p class="text-slate-300 font-semibold mb-3">Institucional & Contato</p>
+                            <ul class="space-y-2.5">
+                                <li><a href="#" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"><i data-lucide="shield" class="w-4 h-4 text-slate-500"></i> Política de Privacidade</a></li>
+                                <li><a href="#" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"><i data-lucide="file-text" class="w-4 h-4 text-slate-500"></i> Termos de Uso</a></li>
+                                <li><a href="#" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-4 h-4 text-slate-500"></i> Instagram</a></li>
+                                <li><a href="#" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-4 h-4 text-slate-500"></i> LinkedIn</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="border-t border-slate-800 mt-10 pt-6">
-                    <p class="text-slate-500 text-sm">
+                <div class="border-t border-slate-800/80 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                    <p>
                         © 2026 SGH — Sistema de Gestão Hídrica. Todos os
                         direitos reservados.
+                    </p>
+                    <p class="flex items-center gap-1.5">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-brand-500"></i>
+                        Desenvolvido com foco em segurança, alta disponibilidade e governança de dados.
                     </p>
                 </div>
             </div>
         </footer>
+
         <script src="script.js"></script>
     </body>
 </html>
-*** End Patch
