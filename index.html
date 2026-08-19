@@ -1405,6 +1405,8 @@
                 <!-- Lead Form -->
                 <form
                     id="lead-form"
+                    action="https://formspree.io/f/xppakjyn"
+                    method="POST"
                     class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl"
                     aria-describedby="form-intro form-required-note"
                 >
@@ -1519,11 +1521,32 @@
                             placeholder="Descreva detalhes, dúvidas ou datas importantes..."
                         ></textarea>
                     </label>
+                    <div class="sr-only" aria-hidden="true">
+                        <label for="input-website">Não preencha este campo</label>
+                        <input
+                            type="text"
+                            id="input-website"
+                            name="_gotcha"
+                            tabindex="-1"
+                            autocomplete="off"
+                        />
+                    </div>
+                    <label class="mt-4 flex items-start gap-3 text-xs leading-relaxed text-slate-400">
+                        <input
+                            required
+                            type="checkbox"
+                            name="consentimento"
+                            value="autorizado"
+                            class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-600 bg-slate-800 text-brand-500 focus:ring-brand-500"
+                        />
+                        <span>Autorizo o contato da equipe SGH sobre esta solicitação. Meus dados serão usados apenas para esse atendimento.</span>
+                    </label>
                     <button
+                        id="form-submit"
                         type="submit"
                         class="w-full mt-5 px-6 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-base shadow-lg shadow-brand-600/30 hover:shadow-brand-500/40 transition-all cursor-pointer inline-flex items-center justify-center gap-2"
                     >
-                        <span>Solicitar demonstração gratuita</span>
+                        <span id="form-submit-label">Solicitar demonstração gratuita</span>
                         <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
                     <output

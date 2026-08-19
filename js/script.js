@@ -26,25 +26,42 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. Lead Form Submission Handling
     const leadForm = document.getElementById("lead-form");
     const formMessage = document.getElementById("form-message");
+    const submitButton = document.getElementById("form-submit");
+    const submitLabel = document.getElementById("form-submit-label");
 
-    if (leadForm && formMessage) {
-        leadForm.addEventListener("submit", (event) => {
+    if (leadForm && formMessage && submitButton && submitLabel) {
+        leadForm.addEventListener("submit", async (event) => {
             event.preventDefault();
+            submitButton.disabled = true;
+            submitLabel.textContent = "Enviando solicitação...";
+            formMessage.classList.add("hidden");
 
-            // Show success message
-            formMessage.classList.remove("hidden");
+            try {
+                const response = await fetch(leadForm.action, {
+                    method: "POST",
+                    body: new FormData(leadForm),
+                    headers: { Accept: "application/json" },
+                });
 
-            // Re-render icons inside success message if needed
-            if (typeof lucide !== "undefined" && lucide.createIcons) {
-                lucide.createIcons();
+                if (!response.ok) {
+                    throw new Error("Falha ao enviar o formulário");
+                }
+
+                formMessage.classList.remove("hidden", "bg-amber-500/10", "border-amber-500/30", "text-amber-300");
+                formMessage.classList.add("bg-emerald-500/10", "border-emerald-500/30", "text-emerald-400");
+                formMessage.querySelector("span").textContent = "Solicitação enviada com sucesso! Nossa equipe entrará em contato em breve.";
+                leadForm.reset();
+            } catch {
+                formMessage.classList.remove("hidden", "bg-emerald-500/10", "border-emerald-500/30", "text-emerald-400");
+                formMessage.classList.add("bg-amber-500/10", "border-amber-500/30", "text-amber-300");
+                formMessage.querySelector("span").textContent = "Não foi possível enviar agora. Tente novamente ou escreva para contato@sghdispenser.com.";
+            } finally {
+                submitButton.disabled = false;
+                submitLabel.textContent = "Solicitar demonstração gratuita";
             }
 
-            // Smooth scroll into message if needed
             formMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
             formMessage.focus({ preventScroll: true });
-
-            // Reset the form fields
-            leadForm.reset();
         });
     }
 
