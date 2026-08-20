@@ -4,28 +4,36 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Termos de Uso | SGH PRO</title>
-        <meta name="description" content="Termos de uso do site SGH Dispenser." />
+        <meta name="description" content="Termos de uso do site SGH PRO - Sistema de Gestão Hídrica para Grandes Eventos." />
         <link rel="canonical" href="https://sghdispenser.com/terms.html" />
         <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#020617" />
+        <meta name="theme-color" content="#030712" />
         <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png" />
         <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon-64.png" />
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
         <script src="https://unpkg.com/lucide@0.468.0"></script>
         <script>
             tailwind.config = {
                 theme: {
                     extend: {
-                        fontFamily: { sans: ["Inter", "sans-serif"] },
+                        fontFamily: {
+                            sans: ["Inter", "sans-serif"],
+                            heading: ["Outfit", "Inter", "sans-serif"],
+                        },
                         colors: {
                             brand: {
-                                300: "#7dd3fc",
                                 400: "#38bdf8",
                                 500: "#0ea5e9",
                                 600: "#0284c7",
+                            },
+                            cyan: {
+                                400: "#22d3ee",
                             },
                         },
                     },
@@ -34,141 +42,75 @@
         </script>
         <link rel="stylesheet" href="css/style.css" />
     </head>
-    <body class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-brand-500 selection:text-white">
-        <header class="relative overflow-hidden bg-slate-950">
-            <div class="absolute inset-0 bg-grid-pattern opacity-40" aria-hidden="true"></div>
-            <nav class="relative z-10 border-b border-slate-800/80" aria-label="Navegação principal">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                    <a href="index.html" class="flex items-center gap-3 group" aria-label="SGH PRO Início">
-                        <img src="assets/images/logo-square.png" alt="SGH Logo" class="w-10 h-10 rounded-xl object-cover shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform" />
-                        <span class="text-white font-bold text-xl tracking-tight">SGH <span class="text-brand-400 font-black">PRO</span></span>
-                    </a>
-                    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors">
-                        <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
-                        Voltar ao site
-                    </a>
-                </div>
+    <body class="font-sans text-slate-200 antialiased bg-[#030712] selection:bg-cyan-500 selection:text-slate-950">
+        <header class="relative overflow-hidden bg-slate-950 border-b border-slate-800/80 bg-grid-tech">
+            <nav class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" aria-label="Navegação principal">
+                <a href="index.html" class="flex items-center gap-3 group" aria-label="SGH PRO Início">
+                    <img src="assets/images/logo-square.png" alt="SGH Logo" class="w-10 h-10 rounded-xl object-cover" />
+                    <span class="text-white font-heading font-bold text-xl tracking-tight">SGH <span class="text-cyan-400 font-extrabold">PRO</span></span>
+                </a>
+                <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-cyan-400 transition-colors">
+                    <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
+                    Voltar ao site
+                </a>
             </nav>
-            <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-                <p class="text-brand-400 text-sm font-bold uppercase tracking-[0.18em] mb-5">SGH Dispenser</p>
-                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Termos de Uso</h1>
-                <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-300">As regras que orientam o acesso e a utilização deste site.</p>
+            <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs font-semibold uppercase tracking-wider mb-4">
+                    SGH PRO Termos
+                </span>
+                <h1 class="text-4xl sm:text-5xl font-heading font-extrabold tracking-tight text-white">Termos de Uso</h1>
+                <p class="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-300 font-light">As condições que regulam o acesso e a utilização deste site institucional.</p>
             </div>
         </header>
 
         <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
             <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_15rem]">
-                <article class="min-w-0 space-y-12 text-slate-600 leading-8">
-                    <section id="termos" aria-labelledby="titulo-termos">
-                        <h2 id="titulo-termos" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">1. Termos</h2>
-                        <p>Ao acessar o site SGH Dispenser, você concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis.</p>
-                        <p class="mt-4">Se você não concordar com algum desses termos, está proibido de usar ou acessar este site. Os materiais contidos neste site são protegidos pelas leis de direitos autorais e marcas comerciais aplicáveis.</p>
+                <article class="min-w-0 space-y-10 text-slate-300 text-sm sm:text-base leading-relaxed">
+                    <section id="termos" class="glass-card p-6 sm:p-8" aria-labelledby="titulo-termos">
+                        <h2 id="titulo-termos" class="text-2xl font-heading font-bold tracking-tight text-white mb-4">1. Aceite dos Termos</h2>
+                        <p>Ao acessar e navegar no site do SGH PRO, você concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis.</p>
                     </section>
 
-                    <section id="licenca" aria-labelledby="titulo-licenca">
-                        <h2 id="titulo-licenca" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">2. Uso de Licença</h2>
-                        <p>É concedida permissão para baixar temporariamente uma cópia dos materiais (informações ou software) no site SGH Dispenser, apenas para visualização transitória pessoal e não comercial. Esta é a concessão de uma licença, não uma transferência de título e, sob esta licença, você não pode:</p>
-                        <ul class="mt-4 list-disc space-y-2 pl-6">
-                            <li>modificar ou copiar os materiais;</li>
-                            <li>usar os materiais para qualquer finalidade comercial ou para exibição pública (comercial ou não comercial);</li>
-                            <li>tentar descompilar ou fazer engenharia reversa de qualquer software contido no site SGH Dispenser;</li>
-                            <li>remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou</li>
-                            <li>transferir os materiais para outra pessoa ou “espelhar” os materiais em qualquer outro servidor.</li>
-                        </ul>
-                        <p class="mt-4">Esta licença será automaticamente rescindida se você violar alguma dessas restrições e poderá ser rescindida pelo SGH Dispenser a qualquer momento.</p>
-                        <p class="mt-4">Ao encerrar a visualização desses materiais ou após o término desta licença, você deve apagar todos os materiais baixados em sua posse, seja em formato eletrônico ou impresso.</p>
+                    <section id="licenca" class="glass-card p-6 sm:p-8" aria-labelledby="titulo-licenca">
+                        <h2 id="titulo-licenca" class="text-2xl font-heading font-bold tracking-tight text-white mb-4">2. Propriedade Intelectual e Uso de Marca</h2>
+                        <p>Todo o conteúdo disponibilizado neste site, incluindo textos, marcas, logotipos, diagramas, ilustrações e códigos de software são de propriedade exclusiva do SGH PRO ou licenciados para este.</p>
+                        <p class="mt-4">É proibida a reprodução, cópia, descompilação ou distribuição não autorizada de qualquer material sem a autorização prévia por escrito da equipe do SGH PRO.</p>
                     </section>
 
-                    <section id="isenção" aria-labelledby="titulo-isencao">
-                        <h2 id="titulo-isencao" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">3. Isenção de responsabilidade</h2>
-                        <ol class="list-decimal space-y-4 pl-6">
-                            <li>Os materiais no site da SGH Dispenser são fornecidos “como estão”. SGH Dispenser não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.</li>
-                            <li>Além disso, o SGH Dispenser não garante ou faz qualquer representação relativa à precisão, aos resultados prováveis ou à confiabilidade do uso dos materiais em seu site ou de outra forma relacionado a esses materiais ou em sites vinculados a este site.</li>
-                        </ol>
+                    <section id="isencao" class="glass-card p-6 sm:p-8" aria-labelledby="titulo-isencao">
+                        <h2 id="titulo-isencao" class="text-2xl font-heading font-bold tracking-tight text-white mb-4">3. Escopo da Solução e Isenções</h2>
+                        <p>O SGH PRO é uma plataforma digital SaaS de inteligência e gestão hídrica. O SGH não comercializa, trata ou fornece água potável, filtros ou equipamentos físicos, cabendo tais responsabilidades aos organizadores e fornecedores contratados para o evento.</p>
                     </section>
 
-                    <section id="limitacoes" aria-labelledby="titulo-limitacoes">
-                        <h2 id="titulo-limitacoes" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">4. Limitações</h2>
-                        <p>Em nenhum caso o SGH Dispenser ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em SGH Dispenser, mesmo que SGH Dispenser ou um representante autorizado da SGH Dispenser tenha sido notificado oralmente ou por escrito da possibilidade de tais danos.</p>
-                        <p class="mt-4">Como algumas jurisdições não permitem limitações em garantias implícitas, ou limitações de responsabilidade por danos consequentes ou incidentais, essas limitações podem não se aplicar a você.</p>
+                    <section id="alteracoes" class="glass-card p-6 sm:p-8" aria-labelledby="titulo-alteracoes">
+                        <h2 id="titulo-alteracoes" class="text-2xl font-heading font-bold tracking-tight text-white mb-4">4. Alterações nos Termos</h2>
+                        <p>O SGH PRO pode revisar estes termos de serviço a qualquer momento, sem aviso prévio. Ao usar este site, você concorda em ficar vinculado à versão atual desses termos de serviço.</p>
                     </section>
 
-                    <section id="precisao" aria-labelledby="titulo-precisao">
-                        <h2 id="titulo-precisao" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">5. Precisão dos materiais</h2>
-                        <p>Os materiais exibidos no site da SGH Dispenser podem incluir erros técnicos, tipográficos ou fotográficos. SGH Dispenser não garante que qualquer material em seu site seja preciso, completo ou atual. SGH Dispenser pode fazer alterações nos materiais contidos em seu site a qualquer momento, sem aviso prévio.</p>
-                        <p class="mt-4">No entanto, SGH Dispenser não se compromete a atualizar os materiais.</p>
-                    </section>
-
-                    <section id="links" aria-labelledby="titulo-links">
-                        <h2 id="titulo-links" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">6. Links</h2>
-                        <p>O SGH Dispenser não analisou todos os sites vinculados ao seu site e não é responsável pelo conteúdo de nenhum site vinculado. A inclusão de qualquer link não implica endosso por SGH Dispenser do site. O uso de qualquer site vinculado é por conta e risco do usuário.</p>
-                    </section>
-
-                    <section id="modificacoes" aria-labelledby="titulo-modificacoes">
-                        <h2 id="titulo-modificacoes" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">Modificações</h2>
-                        <p>O SGH Dispenser pode revisar estes termos de serviço do site a qualquer momento, sem aviso prévio. Ao usar este site, você concorda em ficar vinculado à versão atual desses termos de serviço.</p>
-                    </section>
-
-                    <section id="lei-aplicavel" aria-labelledby="titulo-lei">
-                        <h2 id="titulo-lei" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">Lei aplicável</h2>
-                        <p>Estes termos e condições são regidos e interpretados de acordo com as leis do SGH Dispenser e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais naquele estado ou localidade.</p>
-                    </section>
+                    <p class="pt-2 text-xs text-slate-500">Última atualização: agosto de 2026.</p>
                 </article>
 
-                <aside class="lg:sticky lg:top-8 lg:self-start border-l-2 border-brand-500/30 pl-5" aria-label="Nesta página">
-                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-400 mb-4">Nesta página</p>
-                    <nav class="space-y-2 text-sm" aria-label="Seções dos termos">
-                        <a href="#termos" class="block text-slate-500 hover:text-brand-600 transition-colors">1. Termos</a>
-                        <a href="#licenca" class="block text-slate-500 hover:text-brand-600 transition-colors">2. Uso de Licença</a>
-                        <a href="#isenção" class="block text-slate-500 hover:text-brand-600 transition-colors">3. Isenção</a>
-                        <a href="#limitacoes" class="block text-slate-500 hover:text-brand-600 transition-colors">4. Limitações</a>
-                        <a href="#precisao" class="block text-slate-500 hover:text-brand-600 transition-colors">5. Precisão</a>
-                        <a href="#links" class="block text-slate-500 hover:text-brand-600 transition-colors">6. Links</a>
-                        <a href="#modificacoes" class="block text-slate-500 hover:text-brand-600 transition-colors">Modificações</a>
-                        <a href="#lei-aplicavel" class="block text-slate-500 hover:text-brand-600 transition-colors">Lei aplicável</a>
+                <aside class="lg:sticky lg:top-28 lg:self-start glass-card p-5" aria-label="Nesta página">
+                    <p class="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-3">Nesta página</p>
+                    <nav class="space-y-2 text-sm" aria-label="Seções dos termos de uso">
+                        <a href="#termos" class="block text-slate-400 hover:text-cyan-300 transition-colors">1. Aceite dos Termos</a>
+                        <a href="#licenca" class="block text-slate-400 hover:text-cyan-300 transition-colors">2. Propriedade Intelectual</a>
+                        <a href="#isencao" class="block text-slate-400 hover:text-cyan-300 transition-colors">3. Escopo da Solução</a>
+                        <a href="#alteracoes" class="block text-slate-400 hover:text-cyan-300 transition-colors">4. Alterações</a>
                     </nav>
                 </aside>
             </div>
         </main>
 
-        <footer class="bg-slate-950 border-t border-slate-800">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-                <p>© 2026 SGH — Sistema de Gestão Hídrica. Todos os direitos reservados.</p>
-                <a href="mailto:contato@sghdispenser.com" class="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 transition-colors">
-                    <i data-lucide="mail" class="w-4 h-4" aria-hidden="true"></i>
+        <footer class="bg-slate-950 border-t border-slate-800 py-8">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <p>© 2026 SGH PRO — Sistema de Gestão Hídrica. Todos os direitos reservados.</p>
+                <a href="mailto:contato@sghdispenser.com" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
                     contato@sghdispenser.com
                 </a>
             </div>
         </footer>
-        <section
-            id="cookie-consent"
-            class="cookie-banner hidden fixed inset-x-4 bottom-4 z-[60] sm:inset-x-auto sm:right-6 sm:w-full sm:max-w-md"
-            role="dialog"
-            aria-modal="false"
-            aria-labelledby="cookie-consent-title"
-            aria-describedby="cookie-consent-description"
-        >
-            <div class="rounded-2xl border border-slate-700 bg-slate-950 p-5 shadow-2xl shadow-slate-950/30 sm:p-6">
-                <div class="flex items-start gap-3">
-                    <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-400" aria-hidden="true">
-                        <i data-lucide="cookie" class="h-5 w-5"></i>
-                    </span>
-                    <div>
-                        <h2 id="cookie-consent-title" class="text-base font-bold text-white">Cookies e privacidade</h2>
-                        <p id="cookie-consent-description" class="mt-2 text-sm leading-6 text-slate-300">
-                            Usamos cookies e tecnologias relacionadas para melhorar sua experiência, entender o uso do site e apoiar conteúdos de publicidade. Saiba mais na <a href="privacy.html" class="font-semibold text-brand-400 underline decoration-brand-400/40 underline-offset-2 hover:text-brand-300">Política de Privacidade</a>.
-                        </p>
-                    </div>
-                </div>
-                <div class="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-                    <button id="cookie-reject" type="button" class="rounded-lg border border-slate-700 px-4 py-2.5 text-sm font-semibold text-slate-300 transition-colors hover:border-slate-500 hover:text-white">Recusar</button>
-                    <button id="cookie-accept" type="button" class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/20 transition-colors hover:bg-brand-500">
-                        Aceitar cookies
-                        <i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
         <script src="js/script.js"></script>
     </body>
 </html>

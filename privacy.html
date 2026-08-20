@@ -4,28 +4,36 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Política de Privacidade | SGH PRO</title>
-        <meta name="description" content="Política de privacidade do site SGH Dispenser." />
+        <meta name="description" content="Política de privacidade do site SGH PRO - Sistema de Gestão Hídrica para Grandes Eventos." />
         <link rel="canonical" href="https://sghdispenser.com/privacy.html" />
         <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#020617" />
+        <meta name="theme-color" content="#030712" />
         <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png" />
         <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon-64.png" />
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
         <script src="https://unpkg.com/lucide@0.468.0"></script>
         <script>
             tailwind.config = {
                 theme: {
                     extend: {
-                        fontFamily: { sans: ["Inter", "sans-serif"] },
+                        fontFamily: {
+                            sans: ["Inter", "sans-serif"],
+                            heading: ["Outfit", "Inter", "sans-serif"],
+                        },
                         colors: {
                             brand: {
-                                300: "#7dd3fc",
                                 400: "#38bdf8",
                                 500: "#0ea5e9",
                                 600: "#0284c7",
+                            },
+                            cyan: {
+                                400: "#22d3ee",
                             },
                         },
                     },
@@ -34,123 +42,79 @@
         </script>
         <link rel="stylesheet" href="css/style.css" />
     </head>
-    <body class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-brand-500 selection:text-white">
-        <header class="relative overflow-hidden bg-slate-950">
-            <div class="absolute inset-0 bg-grid-pattern opacity-40" aria-hidden="true"></div>
-            <nav class="relative z-10 border-b border-slate-800/80" aria-label="Navegação principal">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                    <a href="index.html" class="flex items-center gap-3 group" aria-label="SGH PRO Início">
-                        <img src="assets/images/logo-square.png" alt="SGH Logo" class="w-10 h-10 rounded-xl object-cover shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform" />
-                        <span class="text-white font-bold text-xl tracking-tight">SGH <span class="text-brand-400 font-black">PRO</span></span>
-                    </a>
-                    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors">
-                        <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
-                        Voltar ao site
-                    </a>
-                </div>
+    <body class="font-sans text-slate-200 antialiased bg-[#030712] selection:bg-cyan-500 selection:text-slate-950">
+        <header class="relative overflow-hidden bg-slate-950 border-b border-slate-800/80 bg-grid-tech">
+            <nav class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" aria-label="Navegação principal">
+                <a href="index.html" class="flex items-center gap-3 group" aria-label="SGH PRO Início">
+                    <img src="assets/images/logo-square.png" alt="SGH Logo" class="w-10 h-10 rounded-xl object-cover" />
+                    <span class="text-white font-heading font-bold text-xl tracking-tight">SGH <span class="text-cyan-400 font-extrabold">PRO</span></span>
+                </a>
+                <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-cyan-400 transition-colors">
+                    <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
+                    Voltar ao site
+                </a>
             </nav>
-            <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-                <p class="text-brand-400 text-sm font-bold uppercase tracking-[0.18em] mb-5">SGH Dispenser</p>
-                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Política de Privacidade</h1>
-                <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-300">Como tratamos as informações pessoais e os dados utilizados neste site.</p>
+            <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs font-semibold uppercase tracking-wider mb-4">
+                    SGH PRO Compliance
+                </span>
+                <h1 class="text-4xl sm:text-5xl font-heading font-extrabold tracking-tight text-white">Política de Privacidade</h1>
+                <p class="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-300 font-light">Como tratamos as informações pessoais e a governança dos dados neste site.</p>
             </div>
         </header>
 
         <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
             <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_15rem]">
-                <article class="min-w-0 space-y-12 text-slate-600 leading-8">
-                    <section id="privacidade" aria-labelledby="titulo-privacidade">
-                        <h2 id="titulo-privacidade" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">Política de Privacidade</h2>
-                        <p>A sua privacidade é importante para nós.</p>
-                        <p class="mt-4">É política do SGH Dispenser respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site SGH Dispenser e em outros sites que possuímos e operamos.</p>
-                        <p class="mt-4">Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço.</p>
-                        <p class="mt-4">Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.</p>
-                        <p class="mt-4">Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado.</p>
-                        <p class="mt-4">Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.</p>
-                        <p class="mt-4">Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.</p>
-                        <p class="mt-4">O nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.</p>
-                        <p class="mt-4">Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.</p>
-                        <p class="mt-4">O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais.</p>
-                        <p class="mt-4">Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.</p>
+                <article class="min-w-0 space-y-10 text-slate-300 text-sm sm:text-base leading-relaxed">
+                    <section id="privacidade" class="glass-card p-6 sm:p-8" aria-labelledby="titulo-privacidade">
+                        <h2 id="titulo-privacidade" class="text-2xl font-heading font-bold tracking-tight text-white mb-4">Política de Privacidade</h2>
+                        <p>A sua privacidade é fundamental para nós.</p>
+                        <p class="mt-4">É política do SGH PRO respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site SGH e em outros canais que possuímos e operamos.</p>
+                        <p class="mt-4">Solicitamos informações pessoais apenas quando estritamente necessárias para lhe fornecer um atendimento comercial ou demonstração técnica de serviço.</p>
+                        <p class="mt-4">Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento prévio. Também informamos a finalidade de uso dos dados coletados.</p>
+                        <p class="mt-4">Apenas retemos as informações pelo tempo necessário para fornecer o serviço solicitado ou atender a obrigações legais e regulatórias.</p>
+                        <p class="mt-4">Não compartilhamos informações de identificação pessoal publicamente ou com terceiros para fins comerciais não autorizados, exceto quando exigido por lei.</p>
                     </section>
 
-                    <section id="cookies" aria-labelledby="titulo-cookies">
-                        <h2 id="titulo-cookies" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">Cookies e publicidade</h2>
-                        <p>O serviço Google AdSense que usamos para veicular publicidade usa um cookie DoubleClick para veicular anúncios mais relevantes em toda a Web e limitar o número de vezes que um determinado anúncio é exibido para você.</p>
-                        <p class="mt-4">Para mais informações sobre o Google AdSense, consulte as FAQs oficiais sobre privacidade do Google AdSense.</p>
-                        <p class="mt-4">Utilizamos anúncios para compensar os custos de funcionamento deste site e fornecer financiamento para futuros desenvolvimentos.</p>
-                        <p class="mt-4">Os cookies de publicidade comportamental usados por este site foram projetados para garantir que você forneça os anúncios mais relevantes sempre que possível, rastreando anonimamente seus interesses e apresentando coisas semelhantes que possam ser do seu interesse.</p>
-                        <p class="mt-4">Vários parceiros anunciam em nosso nome e os cookies de rastreamento de afiliados simplesmente nos permitem ver se nossos clientes acessaram o site através de um dos sites de nossos parceiros, para que possamos creditá-los adequadamente e, quando aplicável, permitir que nossos parceiros afiliados ofereçam qualquer promoção que possa fornecê-lo para fazer uma compra.</p>
+                    <section id="cookies" class="glass-card p-6 sm:p-8" aria-labelledby="titulo-cookies">
+                        <h2 id="titulo-cookies" class="text-2xl font-heading font-bold tracking-tight text-white mb-4">Cookies e Tecnologias de Navegação</h2>
+                        <p>Utilizamos cookies e tecnologias similares para garantir a segurança da navegação, lembrar preferências de uso e analisar o tráfego do nosso site para aprimoramento contínuo da experiência do usuário.</p>
+                        <p class="mt-4">Você pode configurar ou recusar cookies a qualquer momento através do nosso banner de consentimento ou das configurações do seu navegador de internet.</p>
                     </section>
 
-                    <section id="compromisso" aria-labelledby="titulo-compromisso">
-                        <h2 id="titulo-compromisso" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">Compromisso do Usuário</h2>
-                        <p>O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o SGH Dispenser oferece no site e, com caráter enunciativo, mas não limitativo:</p>
-                        <ol class="mt-4 list-[upper-alpha] space-y-3 pl-6">
-                            <li>Não se envolver em atividades que sejam ilegais ou contrárias à boa-fé e à ordem pública;</li>
-                            <li>Não difundir propaganda ou conteúdo de natureza racista, xenofóbica, jogos de sorte ou azar, qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos;</li>
-                            <li>Não causar danos aos sistemas físicos (hardwares) e lógicos (softwares) do SGH Dispenser, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados.</li>
-                        </ol>
+                    <section id="compromisso" class="glass-card p-6 sm:p-8" aria-labelledby="titulo-compromisso">
+                        <h2 id="titulo-compromisso" class="text-2xl font-heading font-bold tracking-tight text-white mb-4">Compromisso do Usuário</h2>
+                        <p>O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o SGH PRO disponibiliza:</p>
+                        <ul class="mt-4 list-disc space-y-2 pl-6 text-slate-300">
+                            <li>Não se envolver em atividades ilegais ou contrárias à boa-fé;</li>
+                            <li>Não tentar violar a integridade, segurança ou disponibilidade dos sistemas do SGH PRO;</li>
+                            <li>Fornecer dados verídicos ao solicitar demonstrações ou atendimentos comerciais.</li>
+                        </ul>
                     </section>
 
-                    <section id="mais-informacoes" aria-labelledby="titulo-mais-informacoes">
-                        <h2 id="titulo-mais-informacoes" class="text-2xl font-bold tracking-tight text-slate-900 mb-4">Mais informações</h2>
-                        <p>Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.</p>
-                    </section>
-
-                    <p class="border-t border-slate-200 pt-6 text-sm text-slate-500">Esta política é efetiva a partir de 20 de agosto de 2026, às 16:26.</p>
+                    <p class="pt-2 text-xs text-slate-500">Esta política é efetiva a partir de agosto de 2026.</p>
                 </article>
 
-                <aside class="lg:sticky lg:top-8 lg:self-start border-l-2 border-brand-500/30 pl-5" aria-label="Nesta página">
-                    <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-400 mb-4">Nesta página</p>
+                <aside class="lg:sticky lg:top-28 lg:self-start glass-card p-5" aria-label="Nesta página">
+                    <p class="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-3">Nesta página</p>
                     <nav class="space-y-2 text-sm" aria-label="Seções da política de privacidade">
-                        <a href="#privacidade" class="block text-slate-500 hover:text-brand-600 transition-colors">Política de Privacidade</a>
-                        <a href="#cookies" class="block text-slate-500 hover:text-brand-600 transition-colors">Cookies e publicidade</a>
-                        <a href="#compromisso" class="block text-slate-500 hover:text-brand-600 transition-colors">Compromisso do Usuário</a>
-                        <a href="#mais-informacoes" class="block text-slate-500 hover:text-brand-600 transition-colors">Mais informações</a>
+                        <a href="#privacidade" class="block text-slate-400 hover:text-cyan-300 transition-colors">Privacidade Geral</a>
+                        <a href="#cookies" class="block text-slate-400 hover:text-cyan-300 transition-colors">Cookies & Navegação</a>
+                        <a href="#compromisso" class="block text-slate-400 hover:text-cyan-300 transition-colors">Compromisso do Usuário</a>
                     </nav>
                 </aside>
             </div>
         </main>
 
-        <footer class="bg-slate-950 border-t border-slate-800">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-                <p>© 2026 SGH — Sistema de Gestão Hídrica. Todos os direitos reservados.</p>
-                <a href="mailto:contato@sghdispenser.com" class="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 transition-colors">
-                    <i data-lucide="mail" class="w-4 h-4" aria-hidden="true"></i>
+        <footer class="bg-slate-950 border-t border-slate-800 py-8">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <p>© 2026 SGH PRO — Sistema de Gestão Hídrica. Todos os direitos reservados.</p>
+                <a href="mailto:contato@sghdispenser.com" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
                     contato@sghdispenser.com
                 </a>
             </div>
         </footer>
-        <section
-            id="cookie-consent"
-            class="cookie-banner hidden fixed inset-x-4 bottom-4 z-[60] sm:inset-x-auto sm:right-6 sm:w-full sm:max-w-md"
-            role="dialog"
-            aria-modal="false"
-            aria-labelledby="cookie-consent-title"
-            aria-describedby="cookie-consent-description"
-        >
-            <div class="rounded-2xl border border-slate-700 bg-slate-950 p-5 shadow-2xl shadow-slate-950/30 sm:p-6">
-                <div class="flex items-start gap-3">
-                    <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-400" aria-hidden="true">
-                        <i data-lucide="cookie" class="h-5 w-5"></i>
-                    </span>
-                    <div>
-                        <h2 id="cookie-consent-title" class="text-base font-bold text-white">Cookies e privacidade</h2>
-                        <p id="cookie-consent-description" class="mt-2 text-sm leading-6 text-slate-300">
-                            Usamos cookies e tecnologias relacionadas para melhorar sua experiência, entender o uso do site e apoiar conteúdos de publicidade. Saiba mais na <a href="privacy.html" class="font-semibold text-brand-400 underline decoration-brand-400/40 underline-offset-2 hover:text-brand-300">Política de Privacidade</a>.
-                        </p>
-                    </div>
-                </div>
-                <div class="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-                    <button id="cookie-reject" type="button" class="rounded-lg border border-slate-700 px-4 py-2.5 text-sm font-semibold text-slate-300 transition-colors hover:border-slate-500 hover:text-white">Recusar</button>
-                    <button id="cookie-accept" type="button" class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/20 transition-colors hover:bg-brand-500">
-                        Aceitar cookies
-                        <i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
         <script src="js/script.js"></script>
     </body>
 </html>
