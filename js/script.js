@@ -75,7 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     headers: { Accept: "application/json" },
                 });
 
-                if (!response.ok) {
+                const result = await response.json().catch(() => ({}));
+
+                if (!response.ok || !result.success) {
                     throw new Error("Falha ao enviar o formulário");
                 }
 
