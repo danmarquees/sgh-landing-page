@@ -62,6 +62,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitLabel = document.getElementById("form-submit-label");
 
     if (leadForm && formMessage && submitButton && submitLabel) {
+        const eventDateInput = document.getElementById("input-data");
+
+        if (eventDateInput) {
+            eventDateInput.addEventListener("input", () => {
+                const digits = eventDateInput.value.replace(/\D/g, "").slice(0, 8);
+                const parts = [];
+
+                if (digits.length > 0) {
+                    parts.push(digits.slice(0, 2));
+                }
+                if (digits.length > 2) {
+                    parts.push(digits.slice(2, 4));
+                }
+                if (digits.length > 4) {
+                    parts.push(digits.slice(4, 8));
+                }
+
+                eventDateInput.value = parts.join("/");
+            });
+        }
+
         leadForm.addEventListener("submit", async (event) => {
             event.preventDefault();
             submitButton.disabled = true;
