@@ -1878,6 +1878,36 @@
             </div>
         </footer>
 
+        <section
+            id="cookie-consent"
+            class="cookie-banner hidden fixed inset-x-4 bottom-4 z-[60] sm:inset-x-auto sm:right-6 sm:w-full sm:max-w-md"
+            role="dialog"
+            aria-modal="false"
+            aria-labelledby="cookie-consent-title"
+            aria-describedby="cookie-consent-description"
+        >
+            <div class="rounded-2xl border border-slate-700 bg-slate-950 p-5 shadow-2xl shadow-slate-950/30 sm:p-6">
+                <div class="flex items-start gap-3">
+                    <span class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-400" aria-hidden="true">
+                        <i data-lucide="cookie" class="h-5 w-5"></i>
+                    </span>
+                    <div>
+                        <h2 id="cookie-consent-title" class="text-base font-bold text-white">Cookies e privacidade</h2>
+                        <p id="cookie-consent-description" class="mt-2 text-sm leading-6 text-slate-300">
+                            Usamos cookies e tecnologias relacionadas para melhorar sua experiência, entender o uso do site e apoiar conteúdos de publicidade. Saiba mais na <a href="privacy.html" class="font-semibold text-brand-400 underline decoration-brand-400/40 underline-offset-2 hover:text-brand-300">Política de Privacidade</a>.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                    <button id="cookie-reject" type="button" class="rounded-lg border border-slate-700 px-4 py-2.5 text-sm font-semibold text-slate-300 transition-colors hover:border-slate-500 hover:text-white">Recusar</button>
+                    <button id="cookie-accept" type="button" class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/20 transition-colors hover:bg-brand-500">
+                        Aceitar cookies
+                        <i data-lucide="check" class="h-4 w-4" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <script src="js/script.js"></script>
     </body>
 </html>

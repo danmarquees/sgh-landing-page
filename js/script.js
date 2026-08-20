@@ -4,7 +4,39 @@ document.addEventListener("DOMContentLoaded", () => {
         lucide.createIcons();
     }
 
-    // 2. Mobile Menu Toggle
+    // 2. Cookie Consent
+    const cookieConsent = document.getElementById("cookie-consent");
+    const cookieAccept = document.getElementById("cookie-accept");
+    const cookieReject = document.getElementById("cookie-reject");
+    const cookieConsentKey = "sgh-cookie-consent";
+
+    if (cookieConsent && cookieAccept && cookieReject) {
+        let consent = null;
+
+        try {
+            consent = localStorage.getItem(cookieConsentKey);
+        } catch {
+            consent = null;
+        }
+
+        if (!consent) {
+            cookieConsent.classList.remove("hidden");
+        }
+
+        const saveCookieChoice = (choice) => {
+            try {
+                localStorage.setItem(cookieConsentKey, choice);
+            } catch {
+                // The banner still closes when storage is unavailable.
+            }
+            cookieConsent.classList.add("hidden");
+        };
+
+        cookieAccept.addEventListener("click", () => saveCookieChoice("accepted"));
+        cookieReject.addEventListener("click", () => saveCookieChoice("rejected"));
+    }
+
+    // 3. Mobile Menu Toggle
     const menuButton = document.getElementById("mobile-menu-btn");
     const menu = document.getElementById("mobile-menu");
 
@@ -23,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Lead Form Submission Handling
+    // 4. Lead Form Submission Handling
     const leadForm = document.getElementById("lead-form");
     const formMessage = document.getElementById("form-message");
     const submitButton = document.getElementById("form-submit");
@@ -65,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. Navbar Scroll Elevation
+    // 5. Navbar Scroll Elevation
     const navbar = document.getElementById("navbar");
     if (navbar) {
         window.addEventListener("scroll", () => {
