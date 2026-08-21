@@ -310,3 +310,140 @@ details[open] {
         animation: none;
     }
 }
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.whatsapp-float-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.65rem;
+    height: 3.65rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #ffffff;
+    box-shadow: 0 8px 24px -4px rgba(37, 211, 102, 0.45), 0 4px 12px -2px rgba(0, 0, 0, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.whatsapp-float:hover .whatsapp-float-btn {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 12px 32px -4px rgba(37, 211, 102, 0.65), 0 6px 16px -2px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-float:active .whatsapp-float-btn {
+    transform: scale(0.95);
+}
+
+.whatsapp-pulse-ring {
+    position: absolute;
+    inset: -5px;
+    border-radius: 9999px;
+    border: 2px solid rgba(37, 211, 102, 0.7);
+    animation: whatsapp-pulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    pointer-events: none;
+}
+
+@keyframes whatsapp-pulse {
+    0% {
+        transform: scale(0.92);
+        opacity: 0.85;
+    }
+    60% {
+        transform: scale(1.38);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.42);
+        opacity: 0;
+    }
+}
+
+.whatsapp-online-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 9999px;
+    background-color: #22c55e;
+    border: 2px solid #0f172a;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+}
+
+.whatsapp-tooltip {
+    position: absolute;
+    right: calc(100% + 0.85rem);
+    white-space: nowrap;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(51, 65, 85, 0.85);
+    color: #ffffff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.45rem 0.85rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.whatsapp-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(15, 23, 42, 0.95);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+@media (max-width: 640px) {
+    .whatsapp-float {
+        bottom: 1.25rem;
+        right: 1.25rem;
+    }
+    .whatsapp-float-btn {
+        width: 3.35rem;
+        height: 3.35rem;
+    }
+    /* Hide tooltip on touch devices */
+    .whatsapp-tooltip {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .whatsapp-pulse-ring {
+        animation: none;
+    }
+    .whatsapp-float-btn {
+        transition: none;
+    }
+}
+
