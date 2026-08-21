@@ -2007,6 +2007,7 @@
                                 name="whatsapp"
                                 autocomplete="tel"
                                 inputmode="tel"
+                                maxlength="16"
                                 class="mt-2 w-full rounded-lg bg-slate-800 border border-slate-700 px-3.5 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all"
                                 placeholder="(11) 99999-9999"
                             />
@@ -2092,19 +2093,23 @@
                     <button
                         id="form-submit"
                         type="submit"
-                        class="w-full mt-5 px-6 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-base shadow-lg shadow-brand-600/30 hover:shadow-brand-500/40 transition-all cursor-pointer inline-flex items-center justify-center gap-2"
+                        class="w-full mt-5 px-6 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-base shadow-lg shadow-brand-600/30 hover:shadow-brand-500/40 transition-all cursor-pointer inline-flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
                     >
                         <span id="form-submit-label">Solicitar Demonstração</span>
-                        <i data-lucide="send" class="w-5 h-5"></i>
+                        <span id="form-submit-icon" class="inline-flex items-center">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </span>
                     </button>
                     <output
                         id="form-message"
-                        class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm flex items-center gap-2"
+                        class="hidden mt-4 p-4 rounded-xl text-sm flex items-center gap-2.5 transition-all"
                         aria-live="polite"
                         tabindex="-1"
                     >
-                        <i data-lucide="check-circle" class="w-5 h-5 shrink-0"></i>
-                        <span>Solicitação enviada com sucesso! Nossa equipe entrará em contato em breve.</span>
+                        <span id="form-message-icon" class="shrink-0">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        </span>
+                        <span id="form-message-text">Solicitação enviada com sucesso! Nossa equipe entrará em contato em breve.</span>
                     </output>
                     <p class="mt-4 text-xs text-slate-500 text-center">
                         Seus dados estão protegidos e serão utilizados exclusivamente para contato sobre o SGH.

@@ -55,38 +55,68 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. Lead Form Submission Handling
+    // 4. Lead Form Formatting & Submission Handling
     const leadForm = document.getElementById("lead-form");
     const formMessage = document.getElementById("form-message");
+    const formMessageIcon = document.getElementById("form-message-icon");
+    const formMessageText = document.getElementById("form-message-text");
     const submitButton = document.getElementById("form-submit");
     const submitLabel = document.getElementById("form-submit-label");
+    const submitIcon = document.getElementById("form-submit-icon");
+    const eventDateInput = document.getElementById("input-data");
+    const whatsappInput = document.getElementById("input-whatsapp");
 
+    // Mask for WhatsApp
+    if (whatsappInput) {
+        whatsappInput.addEventListener("input", () => {
+            const digits = whatsappInput.value.replace(/\D/g, "").slice(0, 11);
+            if (digits.length === 0) {
+                whatsappInput.value = "";
+            } else if (digits.length <= 2) {
+                whatsappInput.value = `(${digits}`;
+            } else if (digits.length <= 6) {
+                whatsappInput.value = `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+            } else if (digits.length <= 10) {
+                whatsappInput.value = `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+            } else {
+                whatsappInput.value = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+            }
+        });
+    }
+
+    // Mask for Event Date (DD/MM/YYYY)
+    if (eventDateInput) {
+        eventDateInput.addEventListener("input", () => {
+            const digits = eventDateInput.value.replace(/\D/g, "").slice(0, 8);
+            if (digits.length === 0) {
+                eventDateInput.value = "";
+                return;
+            }
+            const parts = [];
+            if (digits.length > 0) {
+                parts.push(digits.slice(0, 2));
+            }
+            if (digits.length > 2) {
+                parts.push(digits.slice(2, 4));
+            }
+            if (digits.length > 4) {
+                parts.push(digits.slice(4, 8));
+            }
+            eventDateInput.value = parts.join("/");
+        });
+    }
+
+    // Submission Handler
     if (leadForm && formMessage && submitButton && submitLabel) {
-        const eventDateInput = document.getElementById("input-data");
-
-        if (eventDateInput) {
-            eventDateInput.addEventListener("input", () => {
-                const digits = eventDateInput.value.replace(/\D/g, "").slice(0, 8);
-                const parts = [];
-
-                if (digits.length > 0) {
-                    parts.push(digits.slice(0, 2));
-                }
-                if (digits.length > 2) {
-                    parts.push(digits.slice(2, 4));
-                }
-                if (digits.length > 4) {
-                    parts.push(digits.slice(4, 8));
-                }
-
-                eventDateInput.value = parts.join("/");
-            });
-        }
-
         leadForm.addEventListener("submit", async (event) => {
             event.preventDefault();
+
+            // Set loading state
             submitButton.disabled = true;
             submitLabel.textContent = "Enviando solicitação...";
+            if (submitIcon) {
+                submitIcon.innerHTML = `<svg class="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>`;
+            }
             formMessage.classList.add("hidden");
 
             try {
@@ -96,23 +126,45 @@ document.addEventListener("DOMContentLoaded", () => {
                     headers: { Accept: "application/json" },
                 });
 
-                const result = await response.json().catch(() => ({}));
+                const result = await response.json().catch(() => null);
 
-                if (!response.ok || !result.success) {
-                    throw new Error("Falha ao enviar o formulário");
+                if (!response.ok || !result || !result.success) {
+                    const errorMsg = (result && result.message)
+                        ? result.message
+                        : "Não foi possível enviar sua solicitação agora. Tente novamente ou escreva para contato@sghdispenser.com.";
+                    throw new Error(errorMsg);
                 }
 
-                formMessage.classList.remove("hidden", "bg-amber-500/10", "border-amber-500/30", "text-amber-300");
-                formMessage.classList.add("bg-emerald-500/10", "border-emerald-500/30", "text-emerald-400");
-                formMessage.querySelector("span").textContent = "Solicitação enviada com sucesso! Nossa equipe entrará em contato em breve.";
+                // Success Feedback
+                formMessage.className = "mt-4 p-4 rounded-xl text-sm flex items-center gap-2.5 transition-all bg-emerald-500/10 border border-emerald-500/30 text-emerald-400";
+                if (formMessageIcon) {
+                    formMessageIcon.innerHTML = `<i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>`;
+                }
+                if (formMessageText) {
+                    formMessageText.textContent = result.message || "Solicitação enviada com sucesso! Nossa equipe entrará em contato em breve.";
+                }
+                formMessage.classList.remove("hidden");
                 leadForm.reset();
-            } catch {
-                formMessage.classList.remove("hidden", "bg-emerald-500/10", "border-emerald-500/30", "text-emerald-400");
-                formMessage.classList.add("bg-amber-500/10", "border-amber-500/30", "text-amber-300");
-                formMessage.querySelector("span").textContent = "Não foi possível enviar agora. Tente novamente ou escreva para contato@sghdispenser.com.";
+            } catch (error) {
+                // Error Feedback
+                formMessage.className = "mt-4 p-4 rounded-xl text-sm flex items-center gap-2.5 transition-all bg-amber-500/10 border border-amber-500/30 text-amber-300";
+                if (formMessageIcon) {
+                    formMessageIcon.innerHTML = `<i data-lucide="alert-circle" class="w-5 h-5 text-amber-300"></i>`;
+                }
+                if (formMessageText) {
+                    formMessageText.textContent = error.message || "Não foi possível enviar agora. Tente novamente ou escreva para contato@sghdispenser.com.";
+                }
+                formMessage.classList.remove("hidden");
             } finally {
+                // Reset submit button state
                 submitButton.disabled = false;
                 submitLabel.textContent = "Solicitar Demonstração";
+                if (submitIcon) {
+                    submitIcon.innerHTML = `<i data-lucide="send" class="w-5 h-5"></i>`;
+                }
+                if (typeof lucide !== "undefined" && lucide.createIcons) {
+                    lucide.createIcons();
+                }
             }
 
             formMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });

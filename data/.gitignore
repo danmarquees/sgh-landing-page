@@ -1,0 +1,3 @@
+# Ignore lead logs
+*.jsonl
+*.log
