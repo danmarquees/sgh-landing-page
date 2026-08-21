@@ -447,3 +447,68 @@ details[open] {
     }
 }
 
+/* Hero Section Mockups & Animations */
+@keyframes float-desktop {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes float-mobile {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(0.8deg);
+    }
+}
+
+.animate-float-desktop {
+    animation: float-desktop 7s ease-in-out infinite;
+}
+
+.animate-float-mobile {
+    animation: float-mobile 6s ease-in-out infinite 0.7s;
+}
+
+.hero-showcase-container {
+    perspective: 1200px;
+}
+
+.hero-desktop-frame {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.hero-showcase-container:hover .hero-desktop-frame {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 70px -15px rgba(2, 132, 199, 0.25), 0 0 40px rgba(14, 165, 233, 0.15);
+}
+
+.hero-mobile-frame {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.hero-showcase-container:hover .hero-mobile-frame {
+    transform: translateY(-8px) scale(1.03) rotate(-1deg);
+    filter: drop-shadow(0 30px 45px rgba(0, 0, 0, 0.75));
+}
+
+/* App Mockup Floating Accents */
+.tech-phone-showcase {
+    perspective: 1000px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-float-desktop,
+    .animate-float-mobile {
+        animation: none;
+    }
+    .hero-showcase-container:hover .hero-desktop-frame,
+    .hero-showcase-container:hover .hero-mobile-frame {
+        transform: none;
+    }
+}
+
