@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 formMessage.querySelector("span").textContent = "Não foi possível enviar agora. Tente novamente ou escreva para contato@sghdispenser.com.";
             } finally {
                 submitButton.disabled = false;
-                submitLabel.textContent = "Solicitar demonstração gratuita";
+                submitLabel.textContent = "Solicitar Demonstração";
             }
 
             formMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
